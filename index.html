@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abedul Apartamentos | Quito Norte-Céntrico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #3f5e41;      /* 10% - Verde principal */
@@ -11,19 +12,23 @@
             --accent: #5e3f4b;       /* 5% - Bordeaux para acentos */
             --detail: #3f485e;       /* 2% - Azul oscuro para detalles */
             --light: #f8f9fa;
-            --dark: #343a40;
+            --dark: #2a2d34;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #fefefe;
         }
         
         .container {
@@ -35,11 +40,13 @@
         
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             position: fixed;
             width: 100%;
             z-index: 1000;
+            transition: var(--transition);
         }
         
         .header-container {
@@ -50,13 +57,21 @@
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--primary);
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
             color: var(--accent);
+            margin-left: 5px;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
         }
         
         nav ul {
@@ -66,94 +81,201 @@
         
         nav ul li {
             margin-left: 30px;
+            position: relative;
         }
         
         nav ul li a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
         }
         
         nav ul li a:hover {
             color: var(--primary);
         }
         
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
         .btn {
             display: inline-block;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, #4a6f4c 100%);
             color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
+            padding: 12px 30px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
         }
         
         .btn:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.4);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(63, 94, 65, 0.7), rgba(63, 94, 65, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, rgba(63, 94, 65, 0.85) 0%, rgba(63, 94, 65, 0.7) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, #fefefe);
+            z-index: 1;
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            font-weight: 700;
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
         }
         
         /* Section Styles */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 70px;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
             margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
         }
         
         .section-title p {
             color: #666;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
         }
         
         /* About Section */
         .about {
             background-color: var(--light);
+            position: relative;
+        }
+        
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
+            opacity: 0.3;
         }
         
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
         }
         
         .about-text {
@@ -161,22 +283,51 @@
         }
         
         .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
             color: var(--primary);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .about-text h3:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--secondary);
+            border-radius: 5px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
         }
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: rotate(2deg);
+            transition: var(--transition);
+        }
+        
+        .about-image:hover {
+            transform: rotate(0) scale(1.02);
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.1);
         }
         
         /* Location Section */
@@ -189,80 +340,149 @@
         
         .feature-card {
             background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border-top: 4px solid var(--secondary);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary);
+            z-index: 2;
+        }
+        
+        .feature-card:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(222,198,140,0.1) 0%, transparent 70%);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card:hover:after {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #4a6f4c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.3);
         }
         
         .feature-card h3 {
             color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature-card h3 i {
-            margin-right: 10px;
-            color: var(--detail);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
         
         .feature-card ul {
             list-style: none;
+            text-align: left;
         }
         
         .feature-card ul li {
-            margin-bottom: 10px;
-            padding-left: 20px;
+            margin-bottom: 12px;
+            padding-left: 25px;
             position: relative;
         }
         
         .feature-card ul li:before {
-            content: "•";
+            content: '✓';
             color: var(--secondary);
             position: absolute;
             left: 0;
+            font-weight: bold;
         }
         
         /* Amenities Section */
         .amenities {
-            background-color: var(--secondary);
-            background: linear-gradient(135deg, var(--secondary) 0%, rgba(222, 198, 140, 0.7) 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, #e8d5a8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .amenities:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
+            opacity: 0.2;
         }
         
         .amenities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 1;
         }
         
         .amenity-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
         }
         
         .amenity-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         
         .amenity-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .amenity-image:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
         }
         
         .amenity-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: var(--transition);
         }
         
         .amenity-card:hover .amenity-image img {
@@ -270,136 +490,250 @@
         }
         
         .amenity-content {
-            padding: 20px;
+            padding: 25px;
+            position: relative;
         }
         
         .amenity-content h3 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .amenity-icon {
+            position: absolute;
+            top: -25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(94, 63, 75, 0.4);
         }
         
         /* Apartments Section */
         .apartments-filter {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         
         .filter-btn {
-            background: none;
+            background: white;
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 10px 25px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary);
+            background: var(--primary);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.3);
         }
         
         .apartments-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
         }
         
         .apartment-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            position: relative;
         }
         
         .apartment-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .apartment-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(94, 63, 75, 0.4);
         }
         
         .apartment-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .apartment-image:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
         }
         
         .apartment-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .apartment-card:hover .apartment-image img {
+            transform: scale(1.1);
         }
         
         .apartment-content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .apartment-content h3 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
         .apartment-details {
             display: flex;
             justify-content: space-between;
-            margin: 15px 0;
-            font-size: 0.9rem;
+            margin: 20px 0;
+            font-size: 0.95rem;
             color: #666;
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .apartment-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-tag {
+            background: rgba(63, 94, 65, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(rgba(94, 63, 75, 0.9), rgba(94, 63, 75, 0.9)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, var(--accent) 0%, #6d4556 100%);
             color: white;
             text-align: center;
-            padding: 100px 0;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
         
         .cta .btn {
-            background-color: var(--secondary);
+            background: var(--secondary);
             color: var(--dark);
+            font-size: 1.1rem;
+            padding: 15px 40px;
         }
         
         .cta .btn:hover {
-            background-color: white;
+            background: white;
             color: var(--accent);
         }
         
         /* Footer */
         footer {
-            background-color: var(--detail);
+            background: linear-gradient(135deg, var(--detail) 0%, #4a5470 100%);
             color: white;
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
+            position: relative;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .footer-column h3 {
             color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .footer-column p {
             margin-bottom: 20px;
-            font-size: 1.2rem;
+            opacity: 0.8;
         }
         
         .footer-column ul {
@@ -407,17 +741,49 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-column ul li a {
             color: #ccc;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-right: 10px;
+            color: var(--secondary);
         }
         
         .footer-column ul li a:hover {
             color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
         }
         
         .copyright {
@@ -428,7 +794,47 @@
             font-size: 0.9rem;
         }
         
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
         /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -436,18 +842,28 @@
             
             nav ul {
                 margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .about-content {
-                flex-direction: column;
+            .hero p {
+                font-size: 1.1rem;
             }
             
             section {
-                padding: 60px 0;
+                padding: 70px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -456,7 +872,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">abedul<span>APARTAMENTOS</span></div>
+            <div class="logo"><i class="fas fa-tree"></i>abedul<span>APARTAMENTOS</span></div>
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
@@ -472,10 +888,19 @@
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 80px; height: 80px; top: 10%; left: 10%;"></div>
+            <div class="floating-element" style="width: 60px; height: 60px; top: 70%; left: 80%;"></div>
+            <div class="floating-element" style="width: 100px; height: 100px; top: 40%; left: 85%;"></div>
+            <div class="floating-element" style="width: 50px; height: 50px; top: 20%; left: 70%;"></div>
+        </div>
         <div class="container hero-content">
             <h1>¿Buscas algo más que solo un departamento?</h1>
             <p>En Abedul, cada detalle está pensado para acompañar tu ritmo de vida. Más que un punto de partida, es un entorno donde lo cotidiano se vuelve especial.</p>
-            <a href="#apartamentos" class="btn">Descubre nuestros apartamentos</a>
+            <div class="hero-btns">
+                <a href="#apartamentos" class="btn">Descubre nuestros apartamentos</a>
+                <a href="#contacto" class="btn btn-secondary">Solicitar información</a>
+            </div>
         </div>
     </section>
 
@@ -492,6 +917,7 @@
                     <p>Proponemos una comunidad en crecimiento, con áreas comunes diseñadas para fomentar la convivencia, en una ubicación estratégica que conecta con servicios, transporte y espacios recreativos.</p>
                     <p>Nuestra arquitectura refleja la armonía entre estética y funcionalidad, creando un entorno donde cada familia puede echar raíces y construir su historia.</p>
                     <p>Comencemos juntos esta nueva etapa, un espacio donde podamos crecer, vivir y crear recuerdos para toda la vida.</p>
+                    <a href="#ubicacion" class="btn" style="margin-top: 20px;">Conocer ubicación</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Abedul Apartamentos">
@@ -509,7 +935,10 @@
             </div>
             <div class="location-features">
                 <div class="feature-card">
-                    <h3><i>📍</i> Servicios</h3>
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Servicios</h3>
                     <ul>
                         <li>Centros Comerciales</li>
                         <li>Supermercados</li>
@@ -519,20 +948,29 @@
                     </ul>
                 </div>
                 <div class="feature-card">
-                    <h3><i>🎭</i> Entretenimiento</h3>
+                    <div class="feature-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>Entretenimiento</h3>
                     <ul>
                         <li>Parques</li>
                         <li>Museos y galerías</li>
                         <li>Restaurantes</li>
+                        <li>Cines</li>
+                        <li>Centros culturales</li>
                     </ul>
                 </div>
                 <div class="feature-card">
-                    <h3><i>🚌</i> Transporte</h3>
+                    <div class="feature-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Transporte</h3>
                     <ul>
                         <li>Parada: Av. Juan Molineros</li>
                         <li>Parada: De Los Jasmines</li>
                         <li>Parada: Eloy Alfaro</li>
                         <li>Parada: Juan Molineros y Eloy A.</li>
+                        <li>Acceso a ciclovías</li>
                     </ul>
                 </div>
             </div>
@@ -551,6 +989,9 @@
                     <div class="amenity-image">
                         <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lounge">
                     </div>
+                    <div class="amenity-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
                     <div class="amenity-content">
                         <h3>Lounge</h3>
                         <p>Un espacio de 500 m² diseñado para el descanso y la conexión, con áreas cubiertas por pérgolas que invitan a compartir, relajarte y disfrutar del entorno.</p>
@@ -559,6 +1000,9 @@
                 <div class="amenity-card">
                     <div class="amenity-image">
                         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wellness Zone">
+                    </div>
+                    <div class="amenity-icon">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
                     <div class="amenity-content">
                         <h3>Wellness Zone</h3>
@@ -569,6 +1013,9 @@
                     <div class="amenity-image">
                         <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pet Zone & Playground">
                     </div>
+                    <div class="amenity-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
                     <div class="amenity-content">
                         <h3>Pet Zone & Playground</h3>
                         <p>Espacios pensados para que los más pequeños disfruten y se diviertan. Además, contamos con una Pet Zone, porque las mascotas también son parte de la familia.</p>
@@ -577,6 +1024,9 @@
                 <div class="amenity-card">
                     <div class="amenity-image">
                         <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lobby">
+                    </div>
+                    <div class="amenity-icon">
+                        <i class="fas fa-door-open"></i>
                     </div>
                     <div class="amenity-content">
                         <h3>Lobby</h3>
@@ -605,14 +1055,20 @@
             <div class="apartments-grid">
                 <!-- T1 -->
                 <div class="apartment-card" data-type="t1">
+                    <div class="apartment-badge">Nuevo</div>
                     <div class="apartment-image">
                         <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T1">
                     </div>
                     <div class="apartment-content">
                         <h3>Apartamento T1</h3>
                         <div class="apartment-details">
-                            <span>Área: 58.99 m²</span>
-                            <span>1 Dormitorio</span>
+                            <span><i class="fas fa-ruler-combined"></i> 58.99 m²</span>
+                            <span><i class="fas fa-bed"></i> 1 Dormitorio</span>
+                        </div>
+                        <div class="apartment-features">
+                            <span class="feature-tag">Cocina integral</span>
+                            <span class="feature-tag">Balcón</span>
+                            <span class="feature-tag">Walk-in closet</span>
                         </div>
                         <p>Diseño eficiente con espacios bien distribuidos para máximo confort.</p>
                         <a href="#" class="btn">Ver detalles</a>
@@ -621,14 +1077,20 @@
                 
                 <!-- T2 -->
                 <div class="apartment-card" data-type="t2">
+                    <div class="apartment-badge">Más vendido</div>
                     <div class="apartment-image">
                         <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T2">
                     </div>
                     <div class="apartment-content">
                         <h3>Apartamento T2</h3>
                         <div class="apartment-details">
-                            <span>Área: 59.93 m²</span>
-                            <span>2 Dormitorios</span>
+                            <span><i class="fas fa-ruler-combined"></i> 59.93 m²</span>
+                            <span><i class="fas fa-bed"></i> 2 Dormitorios</span>
+                        </div>
+                        <div class="apartment-features">
+                            <span class="feature-tag">Terraza 26m²</span>
+                            <span class="feature-tag">Cocina integral</span>
+                            <span class="feature-tag">Vista panorámica</span>
                         </div>
                         <p>Amplio apartamento con terraza de 26.22 m² en primer piso.</p>
                         <a href="#" class="btn">Ver detalles</a>
@@ -643,8 +1105,13 @@
                     <div class="apartment-content">
                         <h3>Apartamento T3</h3>
                         <div class="apartment-details">
-                            <span>Área: 77.29 m²</span>
-                            <span>3 Dormitorios</span>
+                            <span><i class="fas fa-ruler-combined"></i> 77.29 m²</span>
+                            <span><i class="fas fa-bed"></i> 3 Dormitorios</span>
+                        </div>
+                        <div class="apartment-features">
+                            <span class="feature-tag">Terraza 43m²</span>
+                            <span class="feature-tag">3 Baños</span>
+                            <span class="feature-tag">Amplio living</span>
                         </div>
                         <p>Espacioso apartamento con terraza de 43.15 m² en primer piso.</p>
                         <a href="#" class="btn">Ver detalles</a>
@@ -657,9 +1124,11 @@
     <!-- CTA Section -->
     <section class="cta" id="contacto">
         <div class="container">
-            <h2>¿Qué pasaría si todo lo que buscas está más cerca de lo que crees?</h2>
-            <p>En Abedul, lo funcional y lo estético se integran para que vivas con libertad, comodidad y estilo. Espacios que se adaptan a ti, a tus planes, a tus sueños.</p>
-            <a href="#contacto" class="btn">Solicita información</a>
+            <div class="cta-content">
+                <h2>¿Qué pasaría si todo lo que buscas está más cerca de lo que crees?</h2>
+                <p>En Abedul, lo funcional y lo estético se integran para que vivas con libertad, comodidad y estilo. Espacios que se adaptan a ti, a tus planes, a tus sueños.</p>
+                <a href="#contacto" class="btn">Solicita información</a>
+            </div>
         </div>
     </section>
 
@@ -671,23 +1140,30 @@
                     <h3>Abedul Apartamentos</h3>
                     <p>Un proyecto de Jacobo Ron Construcciones</p>
                     <p>Intersección Abedules N60-101 y Juan Molineros<br>Quito Norte-Céntrico</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Enlaces</h3>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#acerca">Acerca</a></li>
-                        <li><a href="#ubicacion">Ubicación</a></li>
-                        <li><a href="#amenities">Amenities</a></li>
-                        <li><a href="#apartamentos">Apartamentos</a></li>
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#acerca"><i class="fas fa-chevron-right"></i> Acerca</a></li>
+                        <li><a href="#ubicacion"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
+                        <li><a href="#amenities"><i class="fas fa-chevron-right"></i> Amenities</a></li>
+                        <li><a href="#apartamentos"><i class="fas fa-chevron-right"></i> Apartamentos</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>Teléfono: +593 XX XXX XXXX</li>
-                        <li>Email: info@abedulapartamentos.com</li>
-                        <li>Web: jr.construcciones.ec</li>
+                        <li><a href="tel:+593XXXXXXXXX"><i class="fas fa-phone"></i> +593 XX XXX XXXX</a></li>
+                        <li><a href="mailto:info@abedulapartamentos.com"><i class="fas fa-envelope"></i> info@abedulapartamentos.com</a></li>
+                        <li><a href="#"><i class="fas fa-globe"></i> jr.construcciones.ec</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Visítanos</a></li>
                     </ul>
                 </div>
             </div>
@@ -740,6 +1216,18 @@
                         });
                     }
                 });
+            });
+            
+            // Efecto de header al hacer scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.08)';
+                }
             });
         });
     </script>
