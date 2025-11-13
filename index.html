@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abedul Apartamentos | Quito Norte-Céntrico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3f5e41;      /* 10% - Verde principal */
@@ -21,7 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
@@ -124,6 +125,8 @@
             box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:before {
@@ -642,6 +645,275 @@
             font-weight: 500;
         }
         
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, var(--detail) 0%, #4a5470 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .booking:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
+            opacity: 0.1;
+        }
+        
+        .booking-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .booking-content {
+            flex: 1;
+        }
+        
+        .booking-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .booking-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .booking-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .booking-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .booking-feature i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .booking-form-container {
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .booking-form-container h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(63, 94, 65, 0.2);
+        }
+        
+        .calendar-time-container {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header h4 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .calendar-nav button:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 10px 5px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .calendar-date {
+            text-align: center;
+            padding: 12px 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .calendar-date:hover {
+            background: rgba(63, 94, 65, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .calendar-date.selected {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
+        }
+        
+        .calendar-date.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            background: #f5f5f5;
+        }
+        
+        .calendar-date.disabled:hover {
+            background: #f5f5f5;
+            transform: none;
+        }
+        
+        .calendar-date.today {
+            background: rgba(222, 198, 140, 0.2);
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .time-selection {
+            margin-top: 25px;
+        }
+        
+        .time-selection h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .time-slot {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
+        }
+        
+        .time-slot.disabled {
+            background: #f5f5f5;
+            color: #ccc;
+            cursor: not-allowed;
+            border-color: #e0e0e0;
+        }
+        
+        .time-slot.disabled:hover {
+            transform: none;
+            border-color: #e0e0e0;
+            box-shadow: none;
+        }
+        
+        .selected-date-time {
+            background: rgba(63, 94, 65, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .selected-date-time p {
+            margin: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
         /* CTA Section */
         .cta {
             background: linear-gradient(135deg, var(--accent) 0%, #6d4556 100%);
@@ -824,14 +1096,114 @@
             }
         }
         
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: modalAppear 0.5s ease-out;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .modal p {
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .modal-details {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .modal-details p {
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .modal-details strong {
+            color: var(--primary);
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3rem;
             }
             
-            .about-content {
+            .about-content, .booking-container {
                 flex-direction: column;
+            }
+            
+            .booking-content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -865,6 +1237,33 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-date {
+                padding: 8px 2px;
+                font-size: 0.9rem;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form-container {
+                padding: 25px;
+            }
+            
+            .calendar-time-container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -880,7 +1279,7 @@
                     <li><a href="#ubicacion">Ubicación</a></li>
                     <li><a href="#amenities">Amenities</a></li>
                     <li><a href="#apartamentos">Apartamentos</a></li>
-                    <li><a href="#contacto" class="btn">Contacto</a></li>
+                    <li><a href="#agendar" class="btn">Agendar Visita</a></li>
                 </ul>
             </nav>
         </div>
@@ -899,7 +1298,7 @@
             <p>En Abedul, cada detalle está pensado para acompañar tu ritmo de vida. Más que un punto de partida, es un entorno donde lo cotidiano se vuelve especial.</p>
             <div class="hero-btns">
                 <a href="#apartamentos" class="btn">Descubre nuestros apartamentos</a>
-                <a href="#contacto" class="btn btn-secondary">Solicitar información</a>
+                <a href="#agendar" class="btn btn-secondary">Agendar Visita</a>
             </div>
         </div>
     </section>
@@ -917,7 +1316,6 @@
                     <p>Proponemos una comunidad en crecimiento, con áreas comunes diseñadas para fomentar la convivencia, en una ubicación estratégica que conecta con servicios, transporte y espacios recreativos.</p>
                     <p>Nuestra arquitectura refleja la armonía entre estética y funcionalidad, creando un entorno donde cada familia puede echar raíces y construir su historia.</p>
                     <p>Comencemos juntos esta nueva etapa, un espacio donde podamos crecer, vivir y crear recuerdos para toda la vida.</p>
-                    <a href="#ubicacion" class="btn" style="margin-top: 20px;">Conocer ubicación</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Abedul Apartamentos">
@@ -1071,7 +1469,7 @@
                             <span class="feature-tag">Walk-in closet</span>
                         </div>
                         <p>Diseño eficiente con espacios bien distribuidos para máximo confort.</p>
-                        <a href="#" class="btn">Ver detalles</a>
+                        <a href="#agendar" class="btn">Agendar Visita</a>
                     </div>
                 </div>
                 
@@ -1093,7 +1491,7 @@
                             <span class="feature-tag">Vista panorámica</span>
                         </div>
                         <p>Amplio apartamento con terraza de 26.22 m² en primer piso.</p>
-                        <a href="#" class="btn">Ver detalles</a>
+                        <a href="#agendar" class="btn">Agendar Visita</a>
                     </div>
                 </div>
                 
@@ -1114,8 +1512,109 @@
                             <span class="feature-tag">Amplio living</span>
                         </div>
                         <p>Espacioso apartamento con terraza de 43.15 m² en primer piso.</p>
-                        <a href="#" class="btn">Ver detalles</a>
+                        <a href="#agendar" class="btn">Agendar Visita</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="agendar">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Agenda Tu Visita</h2>
+                <p style="color: rgba(255,255,255,0.9);">Reserva una cita para conocer nuestros apartamentos y vivir la experiencia Abedul</p>
+            </div>
+            <div class="booking-container">
+                <div class="booking-content">
+                    <h2>Visita Personalizada</h2>
+                    <p>Te invitamos a conocer nuestros apartamentos y amenities en una visita personalizada. Nuestros asesores estarán encantados de mostrarte todos los detalles y resolver tus preguntas.</p>
+                    
+                    <div class="booking-features">
+                        <div class="booking-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Visitas de 45 minutos aproximadamente</span>
+                        </div>
+                        <div class="booking-feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>Atención personalizada con nuestros asesores</span>
+                        </div>
+                        <div class="booking-feature">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Recorrido por amenities y apartamentos modelo</span>
+                        </div>
+                        <div class="booking-feature">
+                            <i class="fas fa-gift"></i>
+                            <span>Información detallada sobre financiamiento y promociones</span>
+                        </div>
+                    </div>
+                    
+                    <p><strong>Horarios disponibles:</strong> Lunes a Sábado de 9:00 am a 6:00 pm</p>
+                    <p><strong>Dirección:</strong> Intersección Abedules N60-101 y Juan Molineros, Quito Norte-Céntrico</p>
+                </div>
+                
+                <div class="booking-form-container">
+                    <h3>Reserva Tu Cita</h3>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="+593 XX XXX XXXX" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="apartment-type">Tipo de Apartamento de Interés</label>
+                            <select id="apartment-type" class="form-control" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="t1">T1 - 1 Dormitorio (58.99 m²)</option>
+                                <option value="t2">T2 - 2 Dormitorios (59.93 m²)</option>
+                                <option value="t3">T3 - 3 Dormitorios (77.29 m²)</option>
+                                <option value="t5">T5 - 2 Dormitorios (58.21 m²)</option>
+                                <option value="t6">T6 - 3 Dormitorios (78.12 m²)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calendar-time-container">
+                            <div class="calendar-header">
+                                <h4 id="current-month">Septiembre 2023</h4>
+                                <div class="calendar-nav">
+                                    <button type="button" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                                    <button type="button" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="calendar-grid" id="calendar">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </div>
+                            
+                            <div class="time-selection">
+                                <h4>Selecciona un Horario</h4>
+                                <div class="time-slots" id="time-slots">
+                                    <!-- Time slots will be generated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="selected-date-time" id="selected-date-time" style="display: none;">
+                                <p><i class="fas fa-calendar-check"></i> Cita agendada para: <span id="selected-date-text"></span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje Adicional (Opcional)</label>
+                            <textarea id="message" class="form-control" rows="3" placeholder="¿Algo específico que te gustaría ver durante la visita?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Confirmar Reserva</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1127,7 +1626,7 @@
             <div class="cta-content">
                 <h2>¿Qué pasaría si todo lo que buscas está más cerca de lo que crees?</h2>
                 <p>En Abedul, lo funcional y lo estético se integran para que vivas con libertad, comodidad y estilo. Espacios que se adaptan a ti, a tus planes, a tus sueños.</p>
-                <a href="#contacto" class="btn">Solicita información</a>
+                <a href="#agendar" class="btn">Agendar Visita</a>
             </div>
         </div>
     </section>
@@ -1163,7 +1662,7 @@
                         <li><a href="tel:+593XXXXXXXXX"><i class="fas fa-phone"></i> +593 XX XXX XXXX</a></li>
                         <li><a href="mailto:info@abedulapartamentos.com"><i class="fas fa-envelope"></i> info@abedulapartamentos.com</a></li>
                         <li><a href="#"><i class="fas fa-globe"></i> jr.construcciones.ec</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Visítanos</a></li>
+                        <li><a href="#agendar"><i class="fas fa-calendar-check"></i> Agendar Visita</a></li>
                     </ul>
                 </div>
             </div>
@@ -1173,23 +1672,42 @@
         </div>
     </footer>
 
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>¡Reserva Confirmada!</h3>
+            <p>Tu cita ha sido agendada exitosamente. Te hemos enviado un correo de confirmación con todos los detalles.</p>
+            
+            <div class="modal-details" id="modal-details">
+                <!-- Reservation details will be inserted here -->
+            </div>
+            
+            <p>Nos vemos pronto en Abedul Apartamentos.</p>
+            <button class="btn" id="modal-btn">Aceptar</button>
+        </div>
+    </div>
+
     <script>
-        // Filtro de apartamentos
+        // Apartment filter functionality
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const apartmentCards = document.querySelectorAll('.apartment-card');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remover clase active de todos los botones
+                    // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     
-                    // Agregar clase active al botón clickeado
+                    // Add active class to clicked button
                     this.classList.add('active');
                     
                     const filterValue = this.getAttribute('data-filter');
                     
-                    // Mostrar/ocultar apartamentos según el filtro
+                    // Show/hide apartments based on filter
                     apartmentCards.forEach(card => {
                         if (filterValue === 'all' || card.getAttribute('data-type') === filterValue) {
                             card.style.display = 'block';
@@ -1200,7 +1718,232 @@
                 });
             });
             
-            // Smooth scrolling para enlaces internos
+            // Calendar functionality
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTime = null;
+            
+            // Initialize calendar
+            initCalendar();
+            
+            // Calendar navigation
+            document.getElementById('prev-month').addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                initCalendar();
+            });
+            
+            document.getElementById('next-month').addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                initCalendar();
+            });
+            
+            // Initialize calendar
+            function initCalendar() {
+                const calendarEl = document.getElementById('calendar');
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                
+                // Get first day of month and number of days
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                
+                // Day names
+                const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+                
+                // Clear calendar
+                calendarEl.innerHTML = '';
+                
+                // Add day names
+                dayNames.forEach(day => {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'calendar-day';
+                    dayEl.textContent = day;
+                    calendarEl.appendChild(dayEl);
+                });
+                
+                // Add empty cells for days before the first day of the month
+                for (let i = 0; i < firstDay.getDay(); i++) {
+                    const emptyEl = document.createElement('div');
+                    emptyEl.className = 'calendar-date';
+                    calendarEl.appendChild(emptyEl);
+                }
+                
+                // Add days of the month
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateEl = document.createElement('div');
+                    dateEl.className = 'calendar-date';
+                    dateEl.textContent = day;
+                    
+                    const date = new Date(year, month, day);
+                    
+                    // Check if it's today
+                    if (date.getTime() === today.getTime()) {
+                        dateEl.classList.add('today');
+                    }
+                    
+                    // Disable past dates and Sundays
+                    if (date < today || date.getDay() === 0) {
+                        dateEl.classList.add('disabled');
+                    } else {
+                        dateEl.addEventListener('click', function() {
+                            // Remove selected class from all dates
+                            document.querySelectorAll('.calendar-date').forEach(el => {
+                                el.classList.remove('selected');
+                            });
+                            
+                            // Add selected class to clicked date
+                            dateEl.classList.add('selected');
+                            
+                            // Store selected date
+                            selectedDate = date;
+                            
+                            // Generate time slots for selected date
+                            generateTimeSlots();
+                            
+                            // Update selected date display
+                            updateSelectedDateTime();
+                        });
+                    }
+                    
+                    calendarEl.appendChild(dateEl);
+                }
+                
+                // Update calendar header
+                const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                                   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                document.getElementById('current-month').textContent = 
+                    `${monthNames[month]} ${year}`;
+            }
+            
+            // Generate time slots
+            function generateTimeSlots() {
+                const timeSlotsEl = document.getElementById('time-slots');
+                timeSlotsEl.innerHTML = '';
+                
+                // Available time slots (in 30-minute intervals from 9am to 6pm)
+                const timeSlots = [
+                    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+                    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+                    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'
+                ];
+                
+                timeSlots.forEach(time => {
+                    const timeSlotEl = document.createElement('div');
+                    timeSlotEl.className = 'time-slot';
+                    timeSlotEl.textContent = time;
+                    
+                    // Randomly disable some time slots for realism
+                    if (Math.random() > 0.7) {
+                        timeSlotEl.classList.add('disabled');
+                    } else {
+                        timeSlotEl.addEventListener('click', function() {
+                            // Remove selected class from all time slots
+                            document.querySelectorAll('.time-slot').forEach(el => {
+                                el.classList.remove('selected');
+                            });
+                            
+                            // Add selected class to clicked time slot
+                            timeSlotEl.classList.add('selected');
+                            
+                            // Store selected time
+                            selectedTime = time;
+                            
+                            // Update selected date display
+                            updateSelectedDateTime();
+                        });
+                    }
+                    
+                    timeSlotsEl.appendChild(timeSlotEl);
+                });
+            }
+            
+            // Update selected date and time display
+            function updateSelectedDateTime() {
+                if (selectedDate && selectedTime) {
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDate = selectedDate.toLocaleDateString('es-ES', options);
+                    
+                    document.getElementById('selected-date-text').textContent = 
+                        `${formattedDate} a las ${selectedTime}`;
+                    
+                    document.getElementById('selected-date-time').style.display = 'block';
+                }
+            }
+            
+            // Form submission
+            document.getElementById('booking-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!selectedDate || !selectedTime) {
+                    alert('Por favor, selecciona una fecha y horario para tu visita.');
+                    return;
+                }
+                
+                // Format date for display
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = selectedDate.toLocaleDateString('es-ES', options);
+                
+                // Get apartment type text
+                const apartmentTypeSelect = document.getElementById('apartment-type');
+                const apartmentTypeText = apartmentTypeSelect.options[apartmentTypeSelect.selectedIndex].text;
+                
+                // Prepare modal content
+                const modalDetails = document.getElementById('modal-details');
+                modalDetails.innerHTML = `
+                    <p><strong>Nombre:</strong> ${document.getElementById('name').value}</p>
+                    <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
+                    <p><strong>Teléfono:</strong> ${document.getElementById('phone').value}</p>
+                    <p><strong>Apartamento:</strong> ${apartmentTypeText}</p>
+                    <p><strong>Fecha y Hora:</strong> ${formattedDate} a las ${selectedTime}</p>
+                `;
+                
+                // In a real application, you would send this data to a server
+                console.log('Reserva recibida:', {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    apartmentType: apartmentTypeText,
+                    date: formattedDate,
+                    time: selectedTime,
+                    message: document.getElementById('message').value
+                });
+                
+                // Show success modal
+                document.getElementById('success-modal').style.display = 'flex';
+                
+                // Reset form
+                this.reset();
+                selectedDate = null;
+                selectedTime = null;
+                document.querySelectorAll('.calendar-date, .time-slot').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                document.getElementById('selected-date-time').style.display = 'none';
+            });
+            
+            // Modal functionality
+            document.getElementById('modal-close').addEventListener('click', function() {
+                document.getElementById('success-modal').style.display = 'none';
+            });
+            
+            document.getElementById('modal-btn').addEventListener('click', function() {
+                document.getElementById('success-modal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                const modal = document.getElementById('success-modal');
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Smooth scrolling for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1218,7 +1961,7 @@
                 });
             });
             
-            // Efecto de header al hacer scroll
+            // Header effect on scroll
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
