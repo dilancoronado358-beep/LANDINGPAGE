@@ -1,1 +1,747 @@
-# LANDINGPAGE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abedul Apartamentos | Quito Norte-Céntrico</title>
+    <style>
+        :root {
+            --primary: #3f5e41;      /* 10% - Verde principal */
+            --secondary: #dec68c;    /* 30% - Beige/dorado secundario */
+            --accent: #5e3f4b;       /* 5% - Bordeaux para acentos */
+            --detail: #3f485e;       /* 2% - Azul oscuro para detalles */
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(63, 94, 65, 0.7), rgba(63, 94, 65, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Location Section */
+        .location-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3 i {
+            margin-right: 10px;
+            color: var(--detail);
+        }
+        
+        .feature-card ul {
+            list-style: none;
+        }
+        
+        .feature-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .feature-card ul li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Amenities Section */
+        .amenities {
+            background-color: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary) 0%, rgba(222, 198, 140, 0.7) 100%);
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .amenity-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .amenity-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .amenity-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .amenity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .amenity-card:hover .amenity-image img {
+            transform: scale(1.1);
+        }
+        
+        .amenity-content {
+            padding: 20px;
+        }
+        
+        .amenity-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Apartments Section */
+        .apartments-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .apartments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .apartment-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .apartment-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .apartment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .apartment-content {
+            padding: 20px;
+        }
+        
+        .apartment-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .apartment-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(94, 63, 75, 0.9), rgba(94, 63, 75, 0.9)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta .btn {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .cta .btn:hover {
+            background-color: white;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--detail);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">abedul<span>APARTAMENTOS</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#acerca">Acerca</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#apartamentos">Apartamentos</a></li>
+                    <li><a href="#contacto" class="btn">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>¿Buscas algo más que solo un departamento?</h1>
+            <p>En Abedul, cada detalle está pensado para acompañar tu ritmo de vida. Más que un punto de partida, es un entorno donde lo cotidiano se vuelve especial.</p>
+            <a href="#apartamentos" class="btn">Descubre nuestros apartamentos</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="acerca">
+        <div class="container">
+            <div class="section-title">
+                <h2>Un lugar para echar raíces</h2>
+                <p>Somos el punto de partida ideal para quienes buscan su primer hogar, combinando accesibilidad, diseño inteligente y calidad de vida.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Más que un lugar para vivir</h3>
+                    <p>Proponemos una comunidad en crecimiento, con áreas comunes diseñadas para fomentar la convivencia, en una ubicación estratégica que conecta con servicios, transporte y espacios recreativos.</p>
+                    <p>Nuestra arquitectura refleja la armonía entre estética y funcionalidad, creando un entorno donde cada familia puede echar raíces y construir su historia.</p>
+                    <p>Comencemos juntos esta nueva etapa, un espacio donde podamos crecer, vivir y crear recuerdos para toda la vida.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Abedul Apartamentos">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="ubicacion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ubicación Estratégica</h2>
+                <p>La intersección de las calles Abedules N60-101 y Juan Molineros en Quito Norte-Céntrico</p>
+            </div>
+            <div class="location-features">
+                <div class="feature-card">
+                    <h3><i>📍</i> Servicios</h3>
+                    <ul>
+                        <li>Centros Comerciales</li>
+                        <li>Supermercados</li>
+                        <li>Educación</li>
+                        <li>Centros Médicos</li>
+                        <li>Entidades bancarias</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i>🎭</i> Entretenimiento</h3>
+                    <ul>
+                        <li>Parques</li>
+                        <li>Museos y galerías</li>
+                        <li>Restaurantes</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i>🚌</i> Transporte</h3>
+                    <ul>
+                        <li>Parada: Av. Juan Molineros</li>
+                        <li>Parada: De Los Jasmines</li>
+                        <li>Parada: Eloy Alfaro</li>
+                        <li>Parada: Juan Molineros y Eloy A.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Amenities</h2>
+                <p>Espacios diseñados para tu bienestar y comodidad</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-image">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lounge">
+                    </div>
+                    <div class="amenity-content">
+                        <h3>Lounge</h3>
+                        <p>Un espacio de 500 m² diseñado para el descanso y la conexión, con áreas cubiertas por pérgolas que invitan a compartir, relajarte y disfrutar del entorno.</p>
+                    </div>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wellness Zone">
+                    </div>
+                    <div class="amenity-content">
+                        <h3>Wellness Zone</h3>
+                        <p>Un gimnasio equipado para tu bienestar diario. Espacio moderno, funcional y cómodo, pensado para que puedas mantenerte activo sin salir de casa.</p>
+                    </div>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pet Zone & Playground">
+                    </div>
+                    <div class="amenity-content">
+                        <h3>Pet Zone & Playground</h3>
+                        <p>Espacios pensados para que los más pequeños disfruten y se diviertan. Además, contamos con una Pet Zone, porque las mascotas también son parte de la familia.</p>
+                    </div>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lobby">
+                    </div>
+                    <div class="amenity-content">
+                        <h3>Lobby</h3>
+                        <p>Un lobby acogedor y elegante que te da la bienvenida a casa. Un espacio funcional para recibir, esperar y conectar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Section -->
+    <section id="apartamentos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Apartamentos</h2>
+                <p>Diseños inteligentes que se adaptan a tu estilo de vida</p>
+            </div>
+            <div class="apartments-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="t1">T1</button>
+                <button class="filter-btn" data-filter="t2">T2</button>
+                <button class="filter-btn" data-filter="t3">T3</button>
+                <button class="filter-btn" data-filter="t5">T5</button>
+                <button class="filter-btn" data-filter="t6">T6</button>
+            </div>
+            <div class="apartments-grid">
+                <!-- T1 -->
+                <div class="apartment-card" data-type="t1">
+                    <div class="apartment-image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T1">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>Apartamento T1</h3>
+                        <div class="apartment-details">
+                            <span>Área: 58.99 m²</span>
+                            <span>1 Dormitorio</span>
+                        </div>
+                        <p>Diseño eficiente con espacios bien distribuidos para máximo confort.</p>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+                
+                <!-- T2 -->
+                <div class="apartment-card" data-type="t2">
+                    <div class="apartment-image">
+                        <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T2">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>Apartamento T2</h3>
+                        <div class="apartment-details">
+                            <span>Área: 59.93 m²</span>
+                            <span>2 Dormitorios</span>
+                        </div>
+                        <p>Amplio apartamento con terraza de 26.22 m² en primer piso.</p>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+                
+                <!-- T3 -->
+                <div class="apartment-card" data-type="t3">
+                    <div class="apartment-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T3">
+                    </div>
+                    <div class="apartment-content">
+                        <h3>Apartamento T3</h3>
+                        <div class="apartment-details">
+                            <span>Área: 77.29 m²</span>
+                            <span>3 Dormitorios</span>
+                        </div>
+                        <p>Espacioso apartamento con terraza de 43.15 m² en primer piso.</p>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contacto">
+        <div class="container">
+            <h2>¿Qué pasaría si todo lo que buscas está más cerca de lo que crees?</h2>
+            <p>En Abedul, lo funcional y lo estético se integran para que vivas con libertad, comodidad y estilo. Espacios que se adaptan a ti, a tus planes, a tus sueños.</p>
+            <a href="#contacto" class="btn">Solicita información</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Abedul Apartamentos</h3>
+                    <p>Un proyecto de Jacobo Ron Construcciones</p>
+                    <p>Intersección Abedules N60-101 y Juan Molineros<br>Quito Norte-Céntrico</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#acerca">Acerca</a></li>
+                        <li><a href="#ubicacion">Ubicación</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#apartamentos">Apartamentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Teléfono: +593 XX XXX XXXX</li>
+                        <li>Email: info@abedulapartamentos.com</li>
+                        <li>Web: jr.construcciones.ec</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Abedul Apartamentos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtro de apartamentos
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const apartmentCards = document.querySelectorAll('.apartment-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Mostrar/ocultar apartamentos según el filtro
+                    apartmentCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-type') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
