@@ -3,1976 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abedul Apartamentos | Quito Norte-Céntrico</title>
+    <title>Abedul Apartamentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #3f5e41;      /* 10% - Verde principal */
-            --secondary: #dec68c;    /* 30% - Beige/dorado secundario */
-            --accent: #5e3f4b;       /* 5% - Bordeaux para acentos */
-            --detail: #3f485e;       /* 2% - Azul oscuro para detalles */
-            --light: #f8f9fa;
-            --dark: #2a2d34;
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecee 100%);
+            color: #3f4b5e;
             line-height: 1.6;
-            overflow-x: hidden;
-            background-color: #fefefe;
+            min-height: 100vh;
+            padding: 20px;
         }
         
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
         }
         
-        /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #dec68c 0%, #3f4b5e 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #dec68c, #36ae71, #3f4b5e);
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 3rem;
             font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Avenir', sans-serif;
         }
         
-        .logo span {
-            color: var(--accent);
-            margin-left: 5px;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, #4a6f4c 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.4);
-        }
-        
-        .btn:hover:before {
-            left: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(63, 94, 65, 0.85) 0%, rgba(63, 94, 65, 0.7) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(transparent, #fefefe);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            max-width: 900px;
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            font-family: 'Avenir', sans-serif;
         }
         
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            font-weight: 300;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .hero-btns {
+        .main-content {
             display: flex;
-            justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--secondary);
-            color: var(--dark);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.1rem;
-        }
-        
-        /* About Section */
-        .about {
-            background-color: var(--light);
-            position: relative;
-        }
-        
-        .about:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
-            opacity: 0.3;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            color: var(--primary);
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .about-text h3:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 5px;
-            background: var(--secondary);
-            border-radius: 5px;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transform: rotate(2deg);
-            transition: var(--transition);
-        }
-        
-        .about-image:hover {
-            transform: rotate(0) scale(1.02);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Location Section */
-        .location-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-bottom: 40px;
         }
         
-        .feature-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            text-align: center;
+        .carousel-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .carousel-container {
             position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 5px;
-            background: var(--secondary);
-            z-index: 2;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
         }
         
-        .feature-card:after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(222,198,140,0.1) 0%, transparent 70%);
-            z-index: -1;
-            opacity: 0;
-            transition: var(--transition);
+        .carousel-container:hover {
+            transform: translateY(-5px);
         }
         
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .feature-card:hover:after {
-            opacity: 1;
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, #4a6f4c 100%);
-            border-radius: 50%;
+        .carousel {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 30px;
-            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.3);
+            width: 500%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .feature-card ul {
-            list-style: none;
-            text-align: left;
-        }
-        
-        .feature-card ul li {
-            margin-bottom: 12px;
-            padding-left: 25px;
+        .carousel-item {
+            width: 20%;
+            height: 100%;
             position: relative;
         }
         
-        .feature-card ul li:before {
-            content: '✓';
-            color: var(--secondary);
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-indicators {
             position: absolute;
+            bottom: 20px;
             left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .calendar-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #dec68c;
+        }
+        
+        .calendar-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .calendar-section h2 {
+            margin-bottom: 25px;
+            color: #3f4b5e;
+            text-align: center;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Avenir', sans-serif;
             font-weight: bold;
         }
         
-        /* Amenities Section */
-        .amenities {
-            background: linear-gradient(135deg, var(--secondary) 0%, #e8d5a8 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .amenities:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
-            opacity: 0.2;
-        }
-        
-        .amenities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .amenity-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .amenity-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-        
-        .amenity-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .amenity-image:after {
-            content: '';
+        .calendar-section h2::after {
+            content: "";
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.3));
-        }
-        
-        .amenity-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .amenity-card:hover .amenity-image img {
-            transform: scale(1.1);
-        }
-        
-        .amenity-content {
-            padding: 25px;
-            position: relative;
-        }
-        
-        .amenity-content h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .amenity-icon {
-            position: absolute;
-            top: -25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            box-shadow: 0 5px 15px rgba(94, 63, 75, 0.4);
-        }
-        
-        /* Apartments Section */
-        .apartments-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .filter-btn {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(63, 94, 65, 0.3);
-        }
-        
-        .apartments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .apartment-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .apartment-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-        
-        .apartment-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(94, 63, 75, 0.4);
-        }
-        
-        .apartment-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .apartment-image:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5));
-        }
-        
-        .apartment-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .apartment-card:hover .apartment-image img {
-            transform: scale(1.1);
-        }
-        
-        .apartment-content {
-            padding: 25px;
-        }
-        
-        .apartment-content h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .apartment-details {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            font-size: 0.95rem;
-            color: #666;
-            background: var(--light);
-            padding: 15px;
-            border-radius: 10px;
-        }
-        
-        .apartment-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .feature-tag {
-            background: rgba(63, 94, 65, 0.1);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        /* Booking Section */
-        .booking {
-            background: linear-gradient(135deg, var(--detail) 0%, #4a5470 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .booking:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/white-texture.png');
-            opacity: 0.1;
-        }
-        
-        .booking-container {
-            display: flex;
-            gap: 50px;
-            align-items: flex-start;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .booking-content {
-            flex: 1;
-        }
-        
-        .booking-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .booking-content p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .booking-features {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .booking-feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .booking-feature i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-        
-        .booking-form-container {
-            flex: 1;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .booking-form-container h3 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            text-align: center;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(63, 94, 65, 0.2);
-        }
-        
-        .calendar-time-container {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .calendar-header h4 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 600;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #36ae71, #dec68c);
+            border-radius: 3px;
         }
         
         .calendar-nav {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
         
         .calendar-nav button {
-            background: var(--primary);
+            background: linear-gradient(135deg, #3f4b5e, #2c3e50);
             color: white;
             border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
+            gap: 5px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            font-family: 'Avenir', sans-serif;
         }
         
         .calendar-nav button:hover {
-            background: var(--accent);
-            transform: scale(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, #36ae71, #2ecc71);
         }
         
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .calendar-day {
-            text-align: center;
-            padding: 10px 5px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.9rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .calendar-date {
-            text-align: center;
-            padding: 12px 5px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            position: relative;
-        }
-        
-        .calendar-date:hover {
-            background: rgba(63, 94, 65, 0.1);
-            transform: scale(1.05);
-        }
-        
-        .calendar-date.selected {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
-        }
-        
-        .calendar-date.disabled {
-            color: #ccc;
-            cursor: not-allowed;
-            background: #f5f5f5;
-        }
-        
-        .calendar-date.disabled:hover {
-            background: #f5f5f5;
-            transform: none;
-        }
-        
-        .calendar-date.today {
-            background: rgba(222, 198, 140, 0.2);
-            color: var(--primary);
+        .month-year {
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-        
-        .time-selection {
-            margin-top: 25px;
-        }
-        
-        .time-selection h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        
-        .time-slot {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 12px 5px;
+            color: #3f4b5e;
             text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
+            font-family: 'Avenir', sans-serif;
         }
         
-        .time-slot:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-        
-        .time-slot.selected {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(63, 94, 65, 0.3);
-        }
-        
-        .time-slot.disabled {
-            background: #f5f5f5;
-            color: #ccc;
-            cursor: not-allowed;
-            border-color: #e0e0e0;
-        }
-        
-        .time-slot.disabled:hover {
-            transform: none;
-            border-color: #e0e0e0;
-            box-shadow: none;
-        }
-        
-        .selected-date-time {
-            background: rgba(63, 94, 65, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            text-align: center;
-            border-left: 4px solid var(--secondary);
-        }
-        
-        .selected-date-time p {
-            margin: 0;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--accent) 0%, #6d4556 100%);
-            color: white;
-            text-align: center;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .calendar {
             width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.2;
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
+            border-collapse: collapse;
             margin: 0 auto;
         }
         
-        .cta h2 {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        .calendar th {
+            background: linear-gradient(135deg, #3f4b5e, #2c3e50);
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Avenir', sans-serif;
         }
         
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            font-weight: 300;
+        .calendar td {
+            border: 1px solid #eaeaea;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            font-weight: 500;
+            font-family: 'Avenir', sans-serif;
         }
         
-        .cta .btn {
-            background: var(--secondary);
-            color: var(--dark);
-            font-size: 1.1rem;
-            padding: 15px 40px;
+        .calendar td:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.05);
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .cta .btn:hover {
-            background: white;
-            color: var(--accent);
+        .selected {
+            background: linear-gradient(135deg, #36ae71, #27ae60) !important;
+            color: white;
+            font-weight: bold;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
         }
         
-        /* Footer */
+        .today {
+            background: linear-gradient(135deg, #dec68c, #d4b876);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .other-month {
+            color: #bdc3c7;
+        }
+        
         footer {
-            background: linear-gradient(135deg, var(--detail) 0%, #4a5470 100%);
-            color: white;
-            padding: 80px 0 30px;
-            position: relative;
+            text-align: center;
+            padding: 25px 0;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 3px solid #dec68c;
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-column h3 {
-            color: var(--secondary);
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        .footer-column p {
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: var(--transition);
+        .brand-footer {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .footer-column ul li a i {
-            margin-right: 10px;
-            color: var(--secondary);
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-            transform: translateX(5px);
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3f4b5e;
+            font-family: 'Avenir', sans-serif;
         }
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
         }
         
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
         }
         
         .social-links a:hover {
-            background: var(--secondary);
-            color: var(--dark);
-            transform: translateY(-5px);
+            color: #36ae71;
         }
         
         .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #999;
+            margin-top: 15px;
             font-size: 0.9rem;
-        }
-        
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            animation: modalAppear 0.5s ease-out;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        @keyframes modalAppear {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-            transition: var(--transition);
-        }
-        
-        .modal-close:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-        
-        .modal-icon {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .modal h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-        
-        .modal p {
-            margin-bottom: 25px;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .modal-details {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        
-        .modal-details p {
-            margin: 8px 0;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .modal-details strong {
-            color: var(--primary);
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .about-content, .booking-container {
-                flex-direction: column;
-            }
-            
-            .booking-content {
-                text-align: center;
-                margin-bottom: 40px;
-            }
-            
-            .time-slots {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            color: #7f8c8d;
         }
         
         @media (max-width: 768px) {
-            .header-container {
+            .main-content {
                 flex-direction: column;
             }
             
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .carousel-container {
+                height: 300px;
             }
             
-            nav ul li {
-                margin: 5px 15px;
+            .calendar td, .calendar th {
+                padding: 10px 5px;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
+            .logo {
                 font-size: 2.2rem;
             }
             
-            .calendar-grid {
-                gap: 5px;
-            }
-            
-            .calendar-date {
-                padding: 8px 2px;
-                font-size: 0.9rem;
-            }
-            
-            .time-slots {
-                grid-template-columns: repeat(2, 1fr);
+            .brand-footer {
+                flex-direction: column;
+                gap: 15px;
             }
         }
         
         @media (max-width: 480px) {
-            .time-slots {
-                grid-template-columns: 1fr;
+            .carousel-container {
+                height: 200px;
             }
             
-            .booking-form-container {
-                padding: 25px;
+            .calendar td, .calendar th {
+                padding: 8px 3px;
+                font-size: 0.85rem;
             }
             
-            .calendar-time-container {
-                padding: 15px;
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .calendar-nav button {
+                padding: 8px 10px;
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo"><i class="fas fa-tree"></i>abedul<span>APARTAMENTOS</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#acerca">Acerca</a></li>
-                    <li><a href="#ubicacion">Ubicación</a></li>
-                    <li><a href="#amenities">Amenities</a></li>
-                    <li><a href="#apartamentos">Apartamentos</a></li>
-                    <li><a href="#agendar" class="btn">Agendar Visita</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="floating-elements">
-            <div class="floating-element" style="width: 80px; height: 80px; top: 10%; left: 10%;"></div>
-            <div class="floating-element" style="width: 60px; height: 60px; top: 70%; left: 80%;"></div>
-            <div class="floating-element" style="width: 100px; height: 100px; top: 40%; left: 85%;"></div>
-            <div class="floating-element" style="width: 50px; height: 50px; top: 20%; left: 70%;"></div>
-        </div>
-        <div class="container hero-content">
-            <h1>¿Buscas algo más que solo un departamento?</h1>
-            <p>En Abedul, cada detalle está pensado para acompañar tu ritmo de vida. Más que un punto de partida, es un entorno donde lo cotidiano se vuelve especial.</p>
-            <div class="hero-btns">
-                <a href="#apartamentos" class="btn">Descubre nuestros apartamentos</a>
-                <a href="#agendar" class="btn btn-secondary">Agendar Visita</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="acerca">
-        <div class="container">
-            <div class="section-title">
-                <h2>Un lugar para echar raíces</h2>
-                <p>Somos el punto de partida ideal para quienes buscan su primer hogar, combinando accesibilidad, diseño inteligente y calidad de vida.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Más que un lugar para vivir</h3>
-                    <p>Proponemos una comunidad en crecimiento, con áreas comunes diseñadas para fomentar la convivencia, en una ubicación estratégica que conecta con servicios, transporte y espacios recreativos.</p>
-                    <p>Nuestra arquitectura refleja la armonía entre estética y funcionalidad, creando un entorno donde cada familia puede echar raíces y construir su historia.</p>
-                    <p>Comencemos juntos esta nueva etapa, un espacio donde podamos crecer, vivir y crear recuerdos para toda la vida.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Abedul Apartamentos">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="ubicacion">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ubicación Estratégica</h2>
-                <p>La intersección de las calles Abedules N60-101 y Juan Molineros en Quito Norte-Céntrico</p>
-            </div>
-            <div class="location-features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>Servicios</h3>
-                    <ul>
-                        <li>Centros Comerciales</li>
-                        <li>Supermercados</li>
-                        <li>Educación</li>
-                        <li>Centros Médicos</li>
-                        <li>Entidades bancarias</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-theater-masks"></i>
-                    </div>
-                    <h3>Entretenimiento</h3>
-                    <ul>
-                        <li>Parques</li>
-                        <li>Museos y galerías</li>
-                        <li>Restaurantes</li>
-                        <li>Cines</li>
-                        <li>Centros culturales</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bus"></i>
-                    </div>
-                    <h3>Transporte</h3>
-                    <ul>
-                        <li>Parada: Av. Juan Molineros</li>
-                        <li>Parada: De Los Jasmines</li>
-                        <li>Parada: Eloy Alfaro</li>
-                        <li>Parada: Juan Molineros y Eloy A.</li>
-                        <li>Acceso a ciclovías</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Amenities Section -->
-    <section class="amenities" id="amenities">
-        <div class="container">
-            <div class="section-title">
-                <h2>Amenities</h2>
-                <p>Espacios diseñados para tu bienestar y comodidad</p>
-            </div>
-            <div class="amenities-grid">
-                <div class="amenity-card">
-                    <div class="amenity-image">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lounge">
-                    </div>
-                    <div class="amenity-icon">
-                        <i class="fas fa-couch"></i>
-                    </div>
-                    <div class="amenity-content">
-                        <h3>Lounge</h3>
-                        <p>Un espacio de 500 m² diseñado para el descanso y la conexión, con áreas cubiertas por pérgolas que invitan a compartir, relajarte y disfrutar del entorno.</p>
-                    </div>
-                </div>
-                <div class="amenity-card">
-                    <div class="amenity-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wellness Zone">
-                    </div>
-                    <div class="amenity-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <div class="amenity-content">
-                        <h3>Wellness Zone</h3>
-                        <p>Un gimnasio equipado para tu bienestar diario. Espacio moderno, funcional y cómodo, pensado para que puedas mantenerte activo sin salir de casa.</p>
-                    </div>
-                </div>
-                <div class="amenity-card">
-                    <div class="amenity-image">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pet Zone & Playground">
-                    </div>
-                    <div class="amenity-icon">
-                        <i class="fas fa-paw"></i>
-                    </div>
-                    <div class="amenity-content">
-                        <h3>Pet Zone & Playground</h3>
-                        <p>Espacios pensados para que los más pequeños disfruten y se diviertan. Además, contamos con una Pet Zone, porque las mascotas también son parte de la familia.</p>
-                    </div>
-                </div>
-                <div class="amenity-card">
-                    <div class="amenity-image">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lobby">
-                    </div>
-                    <div class="amenity-icon">
-                        <i class="fas fa-door-open"></i>
-                    </div>
-                    <div class="amenity-content">
-                        <h3>Lobby</h3>
-                        <p>Un lobby acogedor y elegante que te da la bienvenida a casa. Un espacio funcional para recibir, esperar y conectar.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Apartments Section -->
-    <section id="apartamentos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Apartamentos</h2>
-                <p>Diseños inteligentes que se adaptan a tu estilo de vida</p>
-            </div>
-            <div class="apartments-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="t1">T1</button>
-                <button class="filter-btn" data-filter="t2">T2</button>
-                <button class="filter-btn" data-filter="t3">T3</button>
-                <button class="filter-btn" data-filter="t5">T5</button>
-                <button class="filter-btn" data-filter="t6">T6</button>
-            </div>
-            <div class="apartments-grid">
-                <!-- T1 -->
-                <div class="apartment-card" data-type="t1">
-                    <div class="apartment-badge">Nuevo</div>
-                    <div class="apartment-image">
-                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T1">
-                    </div>
-                    <div class="apartment-content">
-                        <h3>Apartamento T1</h3>
-                        <div class="apartment-details">
-                            <span><i class="fas fa-ruler-combined"></i> 58.99 m²</span>
-                            <span><i class="fas fa-bed"></i> 1 Dormitorio</span>
+    <div class="container">
+        <header>
+            <div class="logo">ABEDUL APARTAMENTOS</div>
+            <div class="tagline">Tu primer hogar, donde comienzan tus sueños</div>
+        </header>
+        
+        <div class="main-content">
+            <div class="carousel-section">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752662/Captura_de_pantalla_2025-11-21_141736_x4pjtn.png" alt="Imagen 1">
                         </div>
-                        <div class="apartment-features">
-                            <span class="feature-tag">Cocina integral</span>
-                            <span class="feature-tag">Balcón</span>
-                            <span class="feature-tag">Walk-in closet</span>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752642/Captura_de_pantalla_2025-11-21_141707_gxbwnc.png" alt="Imagen 2">
                         </div>
-                        <p>Diseño eficiente con espacios bien distribuidos para máximo confort.</p>
-                        <a href="#agendar" class="btn">Agendar Visita</a>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752529/EXTERIOR_to759n.jpg" alt="Imagen 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752528/Patio_de_juegos_brnbzr.jpg" alt="Imagen 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752527/BBQ_peayaf.jpg" alt="Imagen 5">
+                        </div>
                     </div>
+                    <div class="carousel-indicators" id="carousel-indicators">
+                        <!-- Los indicadores se generarán con JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calendar-section">
+                <h2>Selecciona una fecha para tu visita</h2>
+                
+                <div class="calendar-nav">
+                    <button id="prev-month">
+                        <i class="fas fa-chevron-left"></i> Mes Anterior
+                    </button>
+                    <div class="month-year" id="current-month-year">Noviembre 2025</div>
+                    <button id="next-month">
+                        Mes Siguiente <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
                 
-                <!-- T2 -->
-                <div class="apartment-card" data-type="t2">
-                    <div class="apartment-badge">Más vendido</div>
-                    <div class="apartment-image">
-                        <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T2">
-                    </div>
-                    <div class="apartment-content">
-                        <h3>Apartamento T2</h3>
-                        <div class="apartment-details">
-                            <span><i class="fas fa-ruler-combined"></i> 59.93 m²</span>
-                            <span><i class="fas fa-bed"></i> 2 Dormitorios</span>
-                        </div>
-                        <div class="apartment-features">
-                            <span class="feature-tag">Terraza 26m²</span>
-                            <span class="feature-tag">Cocina integral</span>
-                            <span class="feature-tag">Vista panorámica</span>
-                        </div>
-                        <p>Amplio apartamento con terraza de 26.22 m² en primer piso.</p>
-                        <a href="#agendar" class="btn">Agendar Visita</a>
-                    </div>
-                </div>
-                
-                <!-- T3 -->
-                <div class="apartment-card" data-type="t3">
-                    <div class="apartment-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento T3">
-                    </div>
-                    <div class="apartment-content">
-                        <h3>Apartamento T3</h3>
-                        <div class="apartment-details">
-                            <span><i class="fas fa-ruler-combined"></i> 77.29 m²</span>
-                            <span><i class="fas fa-bed"></i> 3 Dormitorios</span>
-                        </div>
-                        <div class="apartment-features">
-                            <span class="feature-tag">Terraza 43m²</span>
-                            <span class="feature-tag">3 Baños</span>
-                            <span class="feature-tag">Amplio living</span>
-                        </div>
-                        <p>Espacioso apartamento con terraza de 43.15 m² en primer piso.</p>
-                        <a href="#agendar" class="btn">Agendar Visita</a>
-                    </div>
-                </div>
+                <table class="calendar" id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Dom</th>
+                            <th>Lun</th>
+                            <th>Mar</th>
+                            <th>Mié</th>
+                            <th>Jue</th>
+                            <th>Vie</th>
+                            <th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                        <!-- El calendario se generará con JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="booking" id="agendar">
-        <div class="container">
-            <div class="section-title">
-                <h2 style="color: white;">Agenda Tu Visita</h2>
-                <p style="color: rgba(255,255,255,0.9);">Reserva una cita para conocer nuestros apartamentos y vivir la experiencia Abedul</p>
-            </div>
-            <div class="booking-container">
-                <div class="booking-content">
-                    <h2>Visita Personalizada</h2>
-                    <p>Te invitamos a conocer nuestros apartamentos y amenities en una visita personalizada. Nuestros asesores estarán encantados de mostrarte todos los detalles y resolver tus preguntas.</p>
-                    
-                    <div class="booking-features">
-                        <div class="booking-feature">
-                            <i class="fas fa-clock"></i>
-                            <span>Visitas de 45 minutos aproximadamente</span>
-                        </div>
-                        <div class="booking-feature">
-                            <i class="fas fa-user-friends"></i>
-                            <span>Atención personalizada con nuestros asesores</span>
-                        </div>
-                        <div class="booking-feature">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <span>Recorrido por amenities y apartamentos modelo</span>
-                        </div>
-                        <div class="booking-feature">
-                            <i class="fas fa-gift"></i>
-                            <span>Información detallada sobre financiamiento y promociones</span>
-                        </div>
-                    </div>
-                    
-                    <p><strong>Horarios disponibles:</strong> Lunes a Sábado de 9:00 am a 6:00 pm</p>
-                    <p><strong>Dirección:</strong> Intersección Abedules N60-101 y Juan Molineros, Quito Norte-Céntrico</p>
-                </div>
-                
-                <div class="booking-form-container">
-                    <h3>Reserva Tu Cita</h3>
-                    <form id="booking-form">
-                        <div class="form-group">
-                            <label for="name">Nombre Completo</label>
-                            <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre completo" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="+593 XX XXX XXXX" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="apartment-type">Tipo de Apartamento de Interés</label>
-                            <select id="apartment-type" class="form-control" required>
-                                <option value="">Selecciona una opción</option>
-                                <option value="t1">T1 - 1 Dormitorio (58.99 m²)</option>
-                                <option value="t2">T2 - 2 Dormitorios (59.93 m²)</option>
-                                <option value="t3">T3 - 3 Dormitorios (77.29 m²)</option>
-                                <option value="t5">T5 - 2 Dormitorios (58.21 m²)</option>
-                                <option value="t6">T6 - 3 Dormitorios (78.12 m²)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="calendar-time-container">
-                            <div class="calendar-header">
-                                <h4 id="current-month">Septiembre 2023</h4>
-                                <div class="calendar-nav">
-                                    <button type="button" id="prev-month"><i class="fas fa-chevron-left"></i></button>
-                                    <button type="button" id="next-month"><i class="fas fa-chevron-right"></i></button>
-                                </div>
-                            </div>
-                            <div class="calendar-grid" id="calendar">
-                                <!-- Calendar will be generated by JavaScript -->
-                            </div>
-                            
-                            <div class="time-selection">
-                                <h4>Selecciona un Horario</h4>
-                                <div class="time-slots" id="time-slots">
-                                    <!-- Time slots will be generated by JavaScript -->
-                                </div>
-                            </div>
-                            
-                            <div class="selected-date-time" id="selected-date-time" style="display: none;">
-                                <p><i class="fas fa-calendar-check"></i> Cita agendada para: <span id="selected-date-text"></span></p>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje Adicional (Opcional)</label>
-                            <textarea id="message" class="form-control" rows="3" placeholder="¿Algo específico que te gustaría ver durante la visita?"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn" style="width: 100%;">Confirmar Reserva</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contacto">
-        <div class="container">
-            <div class="cta-content">
-                <h2>¿Qué pasaría si todo lo que buscas está más cerca de lo que crees?</h2>
-                <p>En Abedul, lo funcional y lo estético se integran para que vivas con libertad, comodidad y estilo. Espacios que se adaptan a ti, a tus planes, a tus sueños.</p>
-                <a href="#agendar" class="btn">Agendar Visita</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Abedul Apartamentos</h3>
-                    <p>Un proyecto de Jacobo Ron Construcciones</p>
-                    <p>Intersección Abedules N60-101 y Juan Molineros<br>Quito Norte-Céntrico</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Enlaces</h3>
-                    <ul>
-                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
-                        <li><a href="#acerca"><i class="fas fa-chevron-right"></i> Acerca</a></li>
-                        <li><a href="#ubicacion"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
-                        <li><a href="#amenities"><i class="fas fa-chevron-right"></i> Amenities</a></li>
-                        <li><a href="#apartamentos"><i class="fas fa-chevron-right"></i> Apartamentos</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="tel:+593XXXXXXXXX"><i class="fas fa-phone"></i> +593 XX XXX XXXX</a></li>
-                        <li><a href="mailto:info@abedulapartamentos.com"><i class="fas fa-envelope"></i> info@abedulapartamentos.com</a></li>
-                        <li><a href="#"><i class="fas fa-globe"></i> jr.construcciones.ec</a></li>
-                        <li><a href="#agendar"><i class="fas fa-calendar-check"></i> Agendar Visita</a></li>
-                    </ul>
+        
+        <footer>
+            <div class="brand-footer">
+                <div class="brand-name">ABEDUL APARTAMENTOS</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Abedul Apartamentos. Todos los derechos reservados.</p>
+                <p>&copy; 2025 Abedul Apartamentos. Todos los derechos reservados.</p>
+                <p>Una marca creada por INGETT</p>
             </div>
-        </div>
-    </footer>
-
-    <!-- Success Modal -->
-    <div class="modal" id="success-modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="modal-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>¡Reserva Confirmada!</h3>
-            <p>Tu cita ha sido agendada exitosamente. Te hemos enviado un correo de confirmación con todos los detalles.</p>
-            
-            <div class="modal-details" id="modal-details">
-                <!-- Reservation details will be inserted here -->
-            </div>
-            
-            <p>Nos vemos pronto en Abedul Apartamentos.</p>
-            <button class="btn" id="modal-btn">Aceptar</button>
-        </div>
+        </footer>
     </div>
 
     <script>
-        // Apartment filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const apartmentCards = document.querySelectorAll('.apartment-card');
+        // Variables globales
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const carousel = document.querySelector('.carousel');
+        let currentDate = new Date(2025, 10, 21); // Noviembre 2025 (los meses van de 0 a 11)
+        
+        // Carrusel automático
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+            updateIndicators();
+        }
+        
+        // Cambiar imagen cada 2 segundos
+        setInterval(nextSlide, 2000);
+        
+        // Crear indicadores del carrusel
+        function createIndicators() {
+            const indicatorsContainer = document.getElementById('carousel-indicators');
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    // Show/hide apartments based on filter
-                    apartmentCards.forEach(card => {
-                        if (filterValue === 'all' || card.getAttribute('data-type') === filterValue) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Calendar functionality
-            let currentDate = new Date();
-            let selectedDate = null;
-            let selectedTime = null;
-            
-            // Initialize calendar
-            initCalendar();
-            
-            // Calendar navigation
-            document.getElementById('prev-month').addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() - 1);
-                initCalendar();
-            });
-            
-            document.getElementById('next-month').addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() + 1);
-                initCalendar();
-            });
-            
-            // Initialize calendar
-            function initCalendar() {
-                const calendarEl = document.getElementById('calendar');
-                const year = currentDate.getFullYear();
-                const month = currentDate.getMonth();
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (i === 0) indicator.classList.add('active');
                 
-                // Get first day of month and number of days
-                const firstDay = new Date(year, month, 1);
-                const lastDay = new Date(year, month + 1, 0);
-                const daysInMonth = lastDay.getDate();
-                
-                // Day names
-                const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-                
-                // Clear calendar
-                calendarEl.innerHTML = '';
-                
-                // Add day names
-                dayNames.forEach(day => {
-                    const dayEl = document.createElement('div');
-                    dayEl.className = 'calendar-day';
-                    dayEl.textContent = day;
-                    calendarEl.appendChild(dayEl);
+                indicator.addEventListener('click', () => {
+                    currentSlide = i;
+                    carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+                    updateIndicators();
                 });
                 
-                // Add empty cells for days before the first day of the month
-                for (let i = 0; i < firstDay.getDay(); i++) {
-                    const emptyEl = document.createElement('div');
-                    emptyEl.className = 'calendar-date';
-                    calendarEl.appendChild(emptyEl);
-                }
-                
-                // Add days of the month
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dateEl = document.createElement('div');
-                    dateEl.className = 'calendar-date';
-                    dateEl.textContent = day;
-                    
-                    const date = new Date(year, month, day);
-                    
-                    // Check if it's today
-                    if (date.getTime() === today.getTime()) {
-                        dateEl.classList.add('today');
-                    }
-                    
-                    // Disable past dates and Sundays
-                    if (date < today || date.getDay() === 0) {
-                        dateEl.classList.add('disabled');
-                    } else {
-                        dateEl.addEventListener('click', function() {
-                            // Remove selected class from all dates
-                            document.querySelectorAll('.calendar-date').forEach(el => {
-                                el.classList.remove('selected');
-                            });
-                            
-                            // Add selected class to clicked date
-                            dateEl.classList.add('selected');
-                            
-                            // Store selected date
-                            selectedDate = date;
-                            
-                            // Generate time slots for selected date
-                            generateTimeSlots();
-                            
-                            // Update selected date display
-                            updateSelectedDateTime();
-                        });
-                    }
-                    
-                    calendarEl.appendChild(dateEl);
-                }
-                
-                // Update calendar header
-                const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                                   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                document.getElementById('current-month').textContent = 
-                    `${monthNames[month]} ${year}`;
+                indicatorsContainer.appendChild(indicator);
             }
-            
-            // Generate time slots
-            function generateTimeSlots() {
-                const timeSlotsEl = document.getElementById('time-slots');
-                timeSlotsEl.innerHTML = '';
-                
-                // Available time slots (in 30-minute intervals from 9am to 6pm)
-                const timeSlots = [
-                    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-                    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
-                    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'
-                ];
-                
-                timeSlots.forEach(time => {
-                    const timeSlotEl = document.createElement('div');
-                    timeSlotEl.className = 'time-slot';
-                    timeSlotEl.textContent = time;
-                    
-                    // Randomly disable some time slots for realism
-                    if (Math.random() > 0.7) {
-                        timeSlotEl.classList.add('disabled');
-                    } else {
-                        timeSlotEl.addEventListener('click', function() {
-                            // Remove selected class from all time slots
-                            document.querySelectorAll('.time-slot').forEach(el => {
-                                el.classList.remove('selected');
-                            });
-                            
-                            // Add selected class to clicked time slot
-                            timeSlotEl.classList.add('selected');
-                            
-                            // Store selected time
-                            selectedTime = time;
-                            
-                            // Update selected date display
-                            updateSelectedDateTime();
-                        });
-                    }
-                    
-                    timeSlotsEl.appendChild(timeSlotEl);
-                });
-            }
-            
-            // Update selected date and time display
-            function updateSelectedDateTime() {
-                if (selectedDate && selectedTime) {
-                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    const formattedDate = selectedDate.toLocaleDateString('es-ES', options);
-                    
-                    document.getElementById('selected-date-text').textContent = 
-                        `${formattedDate} a las ${selectedTime}`;
-                    
-                    document.getElementById('selected-date-time').style.display = 'block';
-                }
-            }
-            
-            // Form submission
-            document.getElementById('booking-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Validate form
-                if (!selectedDate || !selectedTime) {
-                    alert('Por favor, selecciona una fecha y horario para tu visita.');
-                    return;
-                }
-                
-                // Format date for display
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const formattedDate = selectedDate.toLocaleDateString('es-ES', options);
-                
-                // Get apartment type text
-                const apartmentTypeSelect = document.getElementById('apartment-type');
-                const apartmentTypeText = apartmentTypeSelect.options[apartmentTypeSelect.selectedIndex].text;
-                
-                // Prepare modal content
-                const modalDetails = document.getElementById('modal-details');
-                modalDetails.innerHTML = `
-                    <p><strong>Nombre:</strong> ${document.getElementById('name').value}</p>
-                    <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
-                    <p><strong>Teléfono:</strong> ${document.getElementById('phone').value}</p>
-                    <p><strong>Apartamento:</strong> ${apartmentTypeText}</p>
-                    <p><strong>Fecha y Hora:</strong> ${formattedDate} a las ${selectedTime}</p>
-                `;
-                
-                // In a real application, you would send this data to a server
-                console.log('Reserva recibida:', {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    apartmentType: apartmentTypeText,
-                    date: formattedDate,
-                    time: selectedTime,
-                    message: document.getElementById('message').value
-                });
-                
-                // Show success modal
-                document.getElementById('success-modal').style.display = 'flex';
-                
-                // Reset form
-                this.reset();
-                selectedDate = null;
-                selectedTime = null;
-                document.querySelectorAll('.calendar-date, .time-slot').forEach(el => {
-                    el.classList.remove('selected');
-                });
-                document.getElementById('selected-date-time').style.display = 'none';
-            });
-            
-            // Modal functionality
-            document.getElementById('modal-close').addEventListener('click', function() {
-                document.getElementById('success-modal').style.display = 'none';
-            });
-            
-            document.getElementById('modal-btn').addEventListener('click', function() {
-                document.getElementById('success-modal').style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                const modal = document.getElementById('success-modal');
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-            
-            // Smooth scrolling for internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Header effect on scroll
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(255, 255, 255, 0.98)';
-                    header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+        }
+        
+        // Actualizar indicadores activos
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
                 } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                    header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.08)';
+                    indicator.classList.remove('active');
                 }
             });
+        }
+        
+        // Generar calendario
+        function generateCalendar() {
+            const calendarBody = document.getElementById('calendar-body');
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+            
+            // Actualizar el encabezado del mes y año
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                               "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            document.getElementById('current-month-year').textContent = 
+                `${monthNames[currentMonth]} ${currentYear}`;
+            
+            // Obtener primer día del mes
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            // Obtener último día del mes
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            
+            // Limpiar el calendario
+            calendarBody.innerHTML = '';
+            
+            let date = 1;
+            
+            // Generar filas del calendario
+            for (let i = 0; i < 6; i++) {
+                let row = document.createElement('tr');
+                
+                // Generar celdas para cada día de la semana
+                for (let j = 0; j < 7; j++) {
+                    let cell = document.createElement('td');
+                    
+                    if (i === 0 && j < firstDay.getDay()) {
+                        // Celdas vacías antes del primer día del mes
+                        cell.textContent = '';
+                        cell.classList.add('other-month');
+                    } else if (date > lastDay.getDate()) {
+                        // Celdas vacías después del último día del mes
+                        cell.textContent = '';
+                        cell.classList.add('other-month');
+                    } else {
+                        // Días del mes
+                        cell.textContent = date;
+                        
+                        // Marcar el día actual
+                        const today = new Date();
+                        if (date === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                            cell.classList.add('today');
+                        }
+                        
+                        // Añadir evento de clic para seleccionar fecha
+                        cell.addEventListener('click', function() {
+                            // Remover selección anterior
+                            const selectedCells = document.querySelectorAll('.selected');
+                            selectedCells.forEach(cell => cell.classList.remove('selected'));
+                            
+                            // Seleccionar nueva fecha
+                            this.classList.add('selected');
+                            
+                            // Aquí puedes agregar la lógica para procesar la fecha seleccionada
+                            console.log(`Fecha seleccionada: ${date}/${currentMonth + 1}/${currentYear}`);
+                        });
+                        
+                        date++;
+                    }
+                    
+                    row.appendChild(cell);
+                }
+                
+                calendarBody.appendChild(row);
+                
+                // Salir del bucle si ya hemos mostrado todos los días
+                if (date > lastDay.getDate()) {
+                    break;
+                }
+            }
+        }
+        
+        // Navegación del calendario
+        document.getElementById('prev-month').addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            generateCalendar();
         });
+        
+        document.getElementById('next-month').addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            generateCalendar();
+        });
+        
+        // Inicializar la página
+        function init() {
+            createIndicators();
+            generateCalendar();
+        }
+        
+        // Ejecutar inicialización al cargar la página
+        init();
     </script>
 </body>
 </html>
