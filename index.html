@@ -286,7 +286,7 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .calendly-inline-widget {
@@ -303,180 +303,6 @@
             margin-top: 20px;
             font-size: 0.95rem;
             padding: 0 10px;
-        }
-        
-        /* Sección del calendario adicional */
-        .calendar-section {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            border: 1px solid var(--primary-brown);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-        
-        .calendar-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--natural-green), var(--navy-blue));
-        }
-        
-        .calendar-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .calendar-section h2 {
-            margin-bottom: 30px;
-            color: var(--navy-blue);
-            text-align: center;
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 18px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-        
-        .calendar-section h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--navy-blue), var(--primary-brown));
-            border-radius: 2px;
-        }
-        
-        .calendar-intro {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            color: var(--light-navy);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        
-        .calendar-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            background: var(--light-beige);
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        
-        .calendar-nav button {
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-            color: var(--white);
-            border: none;
-            padding: 14px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(63, 75, 94, 0.3);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-        }
-        
-        .calendar-nav button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(63, 75, 94, 0.4);
-            background: linear-gradient(135deg, var(--natural-green), var(--dark-green));
-        }
-        
-        .month-year {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--navy-blue);
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .calendar {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 8px;
-            margin: 0 auto;
-        }
-        
-        .calendar th {
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-            color: var(--white);
-            padding: 18px 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 12px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .calendar td {
-            border: 2px solid transparent;
-            padding: 18px 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            font-weight: 500;
-            border-radius: 12px;
-            background: var(--light-beige);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.05rem;
-        }
-        
-        .calendar td:hover {
-            background: var(--primary-brown);
-            color: var(--navy-blue);
-            transform: scale(1.08);
-            z-index: 1;
-            box-shadow: 0 8px 20px rgba(222, 198, 140, 0.4);
-            border-color: var(--dark-brown);
-        }
-        
-        .selected {
-            background: linear-gradient(135deg, var(--natural-green), var(--dark-green)) !important;
-            color: var(--white);
-            font-weight: bold;
-            transform: scale(1.08);
-            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-            border-color: var(--dark-green);
-        }
-        
-        .today {
-            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            color: var(--white);
-            font-weight: bold;
-            border-color: var(--dark-brown);
-        }
-        
-        .other-month {
-            color: #bdc3c7;
-            background: var(--light-gray);
-        }
-        
-        .calendar-note {
-            text-align: center;
-            font-style: italic;
-            color: var(--gray);
-            margin-top: 25px;
-            font-size: 0.95rem;
         }
         
         /* Footer mejorado */
@@ -589,7 +415,7 @@
                 height: 350px;
             }
             
-            .calendly-section, .calendar-section {
+            .calendly-section {
                 padding: 30px 20px;
             }
             
@@ -605,15 +431,6 @@
                 flex-direction: column;
                 gap: 20px;
             }
-            
-            .calendar-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .month-year {
-                order: -1;
-            }
         }
         
         @media (max-width: 480px) {
@@ -621,15 +438,11 @@
                 height: 250px;
             }
             
-            .calendar td, .calendar th {
-                padding: 14px 8px;
-            }
-            
-            .calendly-section, .calendar-section {
+            .calendly-section {
                 padding: 25px 15px;
             }
             
-            .calendly-section h2, .calendar-section h2 {
+            .calendly-section h2 {
                 font-size: 1.8rem;
             }
             
@@ -641,16 +454,7 @@
                 font-size: 2.2rem;
             }
             
-            .calendar-nav button {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .calendar {
-                border-spacing: 5px;
-            }
-            
-            .calendly-intro, .calendar-intro {
+            .calendly-intro {
                 font-size: 1rem;
             }
         }
@@ -697,7 +501,7 @@
         
         <!-- Sección de Calendly -->
         <section class="calendly-section">
-            <h2><i class="far fa-calendar-alt"></i> Agenda Tu Visita Rápida</h2>
+            <h2><i class="far fa-calendar-alt"></i> Agenda Tu Visita</h2>
             
             <p class="calendly-intro">
                 ¡Te invitamos a conocer nuestro proyecto! Agenda una cita para visitar Abedul Apartamentos 
@@ -714,48 +518,6 @@
             
             <p class="calendly-note">
                 <i class="fas fa-info-circle"></i> Después de agendar tu cita, recibirás un correo de confirmación con todos los detalles.
-            </p>
-        </section>
-        
-        <!-- Sección del calendario adicional -->
-        <section class="calendar-section">
-            <h2><i class="fas fa-calendar-check"></i> Disponibilidad de Visitas</h2>
-            
-            <p class="calendar-intro">
-                A continuación, puedes consultar nuestra disponibilidad de visitas para los próximos meses. 
-                Los días marcados en verde ya están reservados. Selecciona un día disponible para obtener 
-                más información sobre horarios.
-            </p>
-            
-            <div class="calendar-nav">
-                <button id="prev-month">
-                    <i class="fas fa-chevron-left"></i> Mes Anterior
-                </button>
-                <div class="month-year" id="current-month-year">Noviembre 2025</div>
-                <button id="next-month">
-                    Mes Siguiente <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <table class="calendar" id="calendar">
-                <thead>
-                    <tr>
-                        <th>Dom</th>
-                        <th>Lun</th>
-                        <th>Mar</th>
-                        <th>Mié</th>
-                        <th>Jue</th>
-                        <th>Vie</th>
-                        <th>Sáb</th>
-                    </tr>
-                </thead>
-                <tbody id="calendar-body">
-                    <!-- El calendario se generará con JavaScript -->
-                </tbody>
-            </table>
-            
-            <p class="calendar-note">
-                <i class="fas fa-lightbulb"></i> Para reservar una fecha específica, por favor utiliza el formulario de Calendly arriba.
             </p>
         </section>
         
@@ -781,9 +543,6 @@
         let currentSlide = 0;
         const totalSlides = 5;
         const carousel = document.querySelector('.carousel');
-        
-        // Variables globales para el calendario
-        let currentDate = new Date(2025, 10, 21); // Noviembre 2025 (los meses van de 0 a 11)
         
         // Carrusel automático
         function nextSlide() {
@@ -826,116 +585,9 @@
             });
         }
         
-        // Generar calendario
-        function generateCalendar() {
-            const calendarBody = document.getElementById('calendar-body');
-            const currentMonth = currentDate.getMonth();
-            const currentYear = currentDate.getFullYear();
-            
-            // Actualizar el encabezado del mes y año
-            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                               "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-            document.getElementById('current-month-year').textContent = 
-                `${monthNames[currentMonth]} ${currentYear}`;
-            
-            // Obtener primer día del mes
-            const firstDay = new Date(currentYear, currentMonth, 1);
-            // Obtener último día del mes
-            const lastDay = new Date(currentYear, currentMonth + 1, 0);
-            
-            // Limpiar el calendario
-            calendarBody.innerHTML = '';
-            
-            let date = 1;
-            
-            // Generar filas del calendario
-            for (let i = 0; i < 6; i++) {
-                let row = document.createElement('tr');
-                
-                // Generar celdas para cada día de la semana
-                for (let j = 0; j < 7; j++) {
-                    let cell = document.createElement('td');
-                    
-                    if (i === 0 && j < firstDay.getDay()) {
-                        // Celdas vacías antes del primer día del mes
-                        cell.textContent = '';
-                        cell.classList.add('other-month');
-                    } else if (date > lastDay.getDate()) {
-                        // Celdas vacías después del último día del mes
-                        cell.textContent = '';
-                        cell.classList.add('other-month');
-                    } else {
-                        // Días del mes
-                        cell.textContent = date;
-                        
-                        // Marcar algunos días como "reservados" (por ejemplo, días 5, 12, 19, 26)
-                        if ([5, 12, 19, 26].includes(date)) {
-                            cell.classList.add('selected');
-                            cell.style.cursor = 'not-allowed';
-                            cell.innerHTML = `${date} <br><small><i class="fas fa-ban"></i></small>`;
-                        }
-                        
-                        // Marcar el día actual
-                        const today = new Date();
-                        if (date === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
-                            cell.classList.add('today');
-                        }
-                        
-                        // Añadir evento de clic para seleccionar fecha (solo si no está reservada)
-                        if (![5, 12, 19, 26].includes(date)) {
-                            cell.addEventListener('click', function() {
-                                // Remover selección anterior
-                                const selectedCells = document.querySelectorAll('.calendar td.selected:not(.other-month)');
-                                selectedCells.forEach(cell => {
-                                    if (![5, 12, 19, 26].includes(parseInt(cell.textContent))) {
-                                        cell.classList.remove('selected');
-                                    }
-                                });
-                                
-                                // Seleccionar nueva fecha
-                                this.classList.add('selected');
-                                
-                                // Mostrar mensaje con la fecha seleccionada
-                                const selectedDate = new Date(currentYear, currentMonth, date);
-                                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                                const formattedDate = selectedDate.toLocaleDateString('es-ES', options);
-                                
-                                // Aquí puedes agregar la lógica para procesar la fecha seleccionada
-                                console.log(`Fecha seleccionada: ${formattedDate}`);
-                                alert(`Has seleccionado: ${formattedDate}. Para reservar esta fecha, por favor utiliza el formulario de Calendly arriba.`);
-                            });
-                        }
-                        
-                        date++;
-                    }
-                    
-                    row.appendChild(cell);
-                }
-                
-                calendarBody.appendChild(row);
-                
-                // Salir del bucle si ya hemos mostrado todos los días
-                if (date > lastDay.getDate()) {
-                    break;
-                }
-            }
-        }
-        
-        // Navegación del calendario
-        document.getElementById('prev-month').addEventListener('click', function() {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            generateCalendar();
-        });
-        
-        document.getElementById('next-month').addEventListener('click', function() {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            generateCalendar();
-        });
-        
         // Inicializar la página
         function init() {
             createIndicators();
-            generateCalendar();
         }
         
         // Ejecutar inicialización al cargar la página
