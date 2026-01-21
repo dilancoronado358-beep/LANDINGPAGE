@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abedul Apartamentos - Tu Primer Hogar</title>
+    <title>Abedul Departamentos - Tu Decisión Inteligente</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Fuentes según el manual de identidad -->
+    <link href="https://fonts.cdnfonts.com/css/ada" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+    <!-- Animate.css para animaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         * {
             margin: 0;
@@ -14,196 +18,471 @@
         }
         
         :root {
-            --primary-brown: #dec68c;
-            --dark-brown: #c9af72;
-            --natural-green: #36ae71;
-            --dark-green: #2a8d5a;
-            --navy-blue: #3f4b5e;
-            --light-navy: #4a576d;
-            --beige: #f8f5f0;
-            --light-beige: #fefcf8;
+            /* Colores principales del manual de identidad */
+            --primary-brown: #dec68c;      /* Marrón Claro #dec68c */
+            --dark-brown: #c9af72;          /* Variante más oscura para hover */
+            --natural-green: #36ae71;       /* Verde Natural #36ae71 */
+            --dark-green: #2a8d5a;          /* Variante más oscura */
+            --navy-blue: #3f4b5e;           /* Azul Marino #3f4b5e */
+            --light-navy: #4a576d;          /* Variante más clara */
+            --beige: #f8f5f0;               /* Beige abedul (color secundario) */
+            --light-beige: #fefcf8;         /* Variante más clara */
             --white: #ffffff;
             --gray: #7f8c8d;
             --light-gray: #e8ecee;
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --off-white: #f9f9f9;
         }
         
         body {
-            background: var(--beige);
+            background-color: var(--white);
             color: var(--navy-blue);
             line-height: 1.7;
             min-height: 100vh;
-            font-family: 'Open Sans', sans-serif;
-            position: relative;
+            /* Tipografía según manual: Avenir para textos */
+            font-family: 'Avenir', 'Open Sans', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        /* Animaciones personalizadas */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse-strong {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 8px 25px rgba(54, 174, 113, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
+            }
+        }
+        
+        @keyframes shine {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        /* Tipografía ADA HYBRID para títulos (según manual) */
+        h1, h2, h3, h4, h5, h6,
+        .hero-title, .section-title, .description-title,
+        .calendly-title, .final-title, .final-subtitle,
+        .cta-title, .brand-name {
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 700;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
-        /* Botón flotante para agenda */
+        /* Botón flotante para agendar cita - NUEVO */
         .floating-button {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            background: var(--natural-green);
-            color: white;
-            width: 60px;
-            height: 60px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--natural-green), var(--dark-green));
+            color: var(--white);
             border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 8px 25px rgba(54, 174, 113, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
+            text-align: center;
             border: none;
-            outline: none;
+            overflow: hidden;
+            animation: pulse-strong 2s infinite;
         }
         
         .floating-button:hover {
-            transform: scale(1.05);
-            background: var(--dark-green);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(54, 174, 113, 0.8);
+            animation: none;
         }
         
-        /* Header limpio con colores originales */
-        header {
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .floating-button:hover::before {
+            left: 100%;
+        }
+        
+        .floating-button .button-text {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 2px;
+            font-family: 'ADA', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating-button .button-icon {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Versión alternativa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .floating-button {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .floating-button .button-text {
+                font-size: 0.6rem;
+            }
+            
+            .floating-button .button-icon {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .floating-button {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+        
+        /* Header - Primera Sección - CON EFECTOS */
+        .hero-section {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 30px 0 20px 0;
             text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 20px;
+            border-bottom: 5px solid var(--primary-brown);
             position: relative;
             overflow: hidden;
-            border-radius: 0 0 40px 40px;
-            background: linear-gradient(135deg, var(--navy-blue) 0%, #2d3748 100%);
-            color: var(--white);
-            box-shadow: var(--shadow-medium);
         }
         
-        .header-overlay {
+        /* Efecto de partículas sutiles en el fondo */
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(222, 198, 140, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(54, 174, 113, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
         }
         
-        .logo {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            font-family: 'Montserrat', sans-serif;
+        .hero-content {
             position: relative;
-            z-index: 2;
-            background: linear-gradient(135deg, var(--primary-brown), var(--natural-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+            z-index: 1;
         }
         
-        .tagline-main {
-            font-size: 2rem;
-            font-weight: 700;
-            max-width: 800px;
-            margin: 0 auto 15px;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            z-index: 2;
-            line-height: 1.3;
-            color: var(--white);
+        .hero-logo-container {
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         
-        .tagline-sub {
-            font-size: 1.6rem;
-            font-weight: 700;
-            max-width: 800px;
-            margin: 0 auto 25px;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            z-index: 2;
-            line-height: 1.4;
-            color: var(--white);
+        .hero-logo {
+            max-width: 150px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            filter: brightness(0) invert(1);
+            transition: all 0.5s ease;
         }
         
-        .apartments-info {
-            font-size: 1.2rem;
+        .hero-logo:hover {
+            transform: rotateY(180deg) scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(222, 198, 140, 0.5));
+        }
+        
+        .hero-subtitle {
+            font-size: 0.8rem;
             font-weight: 400;
+            letter-spacing: 4px;
+            margin: 0 auto 15px;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            padding: 0 20px;
+            color: var(--primary-brown);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Efecto de subrayado animado para el subtítulo */
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-brown), transparent);
+            transition: width 0.6s ease;
+        }
+        
+        .hero-subtitle:hover::after {
+            width: 80%;
+        }
+        
+        .hero-title-container {
+            max-width: 900px;
+            margin: 0 auto 25px;
+            padding: 0 20px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .hero-subtitle-text {
+            font-size: 2.2rem; /* Mismo tamaño que el título */
+            font-weight: 800; /* Misma negrita que el título */
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 15px;
+            font-family: 'ADA', 'Montserrat', sans-serif; /* Misma fuente ADA */
+            text-transform: uppercase;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Avenir', 'Open Sans', sans-serif;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            line-height: 1.5;
-            color: var(--primary-brown);
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
         
-        /* Sección del carrusel */
+        /* Sección de logos de características - CON ANIMACIONES */
+        .features-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 0 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 100px;
+            position: relative;
+            flex: 1;
+            padding: 10px 5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+        
+        .feature-item::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+        
+        .feature-item:last-child::after {
+            display: none;
+        }
+        
+        .feature-logo {
+            width: 160px;
+            height: 80px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: all 0.5s ease;
+        }
+        
+        .feature-item:hover .feature-logo {
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(70deg);
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Sección del carrusel - CON EFECTOS MEJORADOS */
         .carousel-section {
-            margin-bottom: 60px;
+            padding: 50px 0;
+            background-color: var(--white);
+            position: relative;
         }
         
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
             color: var(--navy-blue);
-            font-weight: 700;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Efecto decorativo en títulos */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green), var(--primary-brown));
+            border-radius: 2px;
+            background-size: 200% 100%;
+            animation: shine 3s linear infinite;
         }
         
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 400px;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: var(--shadow-medium);
-            transition: all 0.4s ease;
+            border-radius: 12px;
+            border: 2px solid var(--light-gray);
+            box-shadow: 0 10px 30px rgba(63, 75, 94, 0.15);
+            animation: slideInRight 0.8s ease-out 0.3s both;
+            transition: all 0.3s ease;
         }
         
         .carousel-container:hover {
+            box-shadow: 0 15px 40px rgba(63, 75, 94, 0.25);
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         
         .carousel {
             display: flex;
             width: 500%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .carousel-item {
             width: 20%;
             height: 100%;
             position: relative;
-        }
-        
-        .carousel-item::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-            pointer-events: none;
+            overflow: hidden;
         }
         
         .carousel-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 8s ease;
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.1);
         }
         
         .carousel-indicators {
@@ -223,130 +502,457 @@
             border-radius: 50%;
             background-color: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .indicator:hover::before {
+            left: 100%;
         }
         
         .indicator.active {
             background-color: var(--white);
             transform: scale(1.3);
             border-color: var(--natural-green);
+            box-shadow: 0 0 10px rgba(54, 174, 113, 0.5);
         }
         
-        /* Sección del Calendly con diseño más fluido */
-        .calendly-section {
-            background: var(--white);
-            padding: 50px 30px;
-            border-radius: 30px;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s ease;
+        /* Sección de descripción - CON ANIMACIONES */
+        .description-section {
+            padding: 60px 0;
+            background-color: var(--light-beige);
+            border-top: 2px solid var(--light-gray);
+            border-bottom: 2px solid var(--light-gray);
             position: relative;
             overflow: hidden;
-            margin-bottom: 50px;
-            border: none;
         }
         
-        .calendly-section::before {
-            content: "";
+        /* Patrón decorativo sutil */
+        .description-section::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green), var(--navy-blue));
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 30%, rgba(222, 198, 140, 0.05) 0%, transparent 50%);
+            z-index: 0;
         }
         
-        .calendly-section:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
+        .description-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out both;
         }
         
-        .calendly-section h2 {
+        .description-title {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--navy-blue);
+            line-height: 1.3;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .description-title::after {
+            content: '✦';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-brown);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .description-title::before {
+            content: '✦';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-brown);
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+        
+        .description-text {
+            font-size: 1.1rem;
+            color: var(--light-navy);
+            line-height: 1.8;
             margin-bottom: 30px;
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .description-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sección del Calendly - CON EFECTOS SIMPLIFICADOS */
+        .calendly-section {
+            padding: 60px 0;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        /* ID para el botón flotante */
+        #agendar-cita {
+            scroll-margin-top: 20px;
+        }
+        
+        .calendly-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out both;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .calendly-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .calendly-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--navy-blue);
             text-align: center;
-            font-size: 2.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
             position: relative;
-            padding-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
         }
         
-        .calendly-section h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--natural-green), var(--primary-brown));
-            border-radius: 2px;
-        }
-        
-        .calendly-intro {
-            text-align: center;
-            margin-bottom: 35px;
-            font-size: 1.2rem;
+        .calendly-subtitle {
+            font-size: 1.3rem;
             color: var(--light-navy);
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-            padding: 0 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            position: relative;
+            font-weight: 400;
+            font-family: 'Avenir', 'Open Sans', sans-serif;
         }
         
-        /* Contenedor de Calendly */
-        .calendly-container {
+        .calendly-widget-container {
             width: 100%;
-            background: var(--light-beige);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 20px;
-            border: none;
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--light-gray);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
         
-        .calendly-inline-widget {
-            width: 100% !important;
-            height: 700px !important;
-            border-radius: 15px !important;
-            overflow: hidden !important;
+        .calendly-widget-container:hover {
+            box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.08);
         }
         
         .calendly-note {
             text-align: center;
             font-style: italic;
             color: var(--gray);
-            margin-top: 25px;
-            font-size: 1rem;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .calendly-note i {
+            color: var(--natural-green);
+            margin-right: 8px;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Sección final - CON EFECTOS */
+        .final-section {
+            padding: 60px 0;
+            background-color: var(--light-beige);
+            border-top: 2px solid var(--light-gray);
+            position: relative;
+        }
+        
+        /* Patrón de hojas sutil */
+        .final-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2336ae71' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .final-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+        
+        .final-title {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: var(--navy-blue);
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .final-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--navy-blue);
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .final-text {
+            font-size: 1.1rem;
+            color: var(--light-navy);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: center;
             padding: 0 10px;
         }
         
-        /* Footer mejorado */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray);
-            font-size: 0.95rem;
-            background: var(--navy-blue);
-            border-radius: 30px 30px 0 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-            margin-top: 40px;
+        .values-list {
+            max-width: 700px;
+            margin: 30px auto;
+            text-align: left;
         }
         
-        .footer-overlay {
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.5s ease-out both;
+            animation-delay: calc(var(--item-index) * 0.1s);
+        }
+        
+        .value-item:hover {
+            background-color: rgba(54, 174, 113, 0.05);
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .value-item:nth-child(1) { --item-index: 1; }
+        .value-item:nth-child(2) { --item-index: 2; }
+        .value-item:nth-child(3) { --item-index: 3; }
+        .value-item:nth-child(4) { --item-index: 4; }
+        
+        .value-icon {
+            color: var(--natural-green);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 4px;
+            animation: pulse 2s infinite;
+            animation-delay: calc(var(--item-index) * 0.5s);
+        }
+        
+        .value-text {
+            font-size: 1.1rem;
+            color: var(--light-navy);
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .final-cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: 1px solid var(--light-gray);
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+        
+        /* Efecto de brillo en CTA */
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 5s linear infinite;
+            z-index: 0;
+        }
+        
+        .final-cta > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--navy-blue);
+            text-transform: uppercase;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            color: var(--light-navy);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 180px;
+            animation: float 4s ease-in-out infinite;
+            animation-delay: calc(var(--contact-index) * 0.2s);
+        }
+        
+        .contact-item:nth-child(1) { --contact-index: 1; }
+        .contact-item:nth-child(2) { --contact-index: 2; }
+        
+        .contact-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon {
+            color: var(--natural-green);
+            transform: scale(1.2);
+        }
+        
+        .contact-text {
+            font-size: 1rem;
+            color: var(--light-navy);
+            margin-bottom: 10px;
+        }
+        
+        .contact-link {
+            color: var(--natural-green);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--natural-green);
+            transition: width 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--dark-green);
+        }
+        
+        .contact-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Footer - CON EFECTOS */
+        footer {
+            padding: 40px 0;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            text-align: center;
+            border-top: 5px solid var(--primary-brown);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efecto de partículas en footer */
+        footer::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 90%, rgba(222, 198, 140, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 90% 10%, rgba(54, 174, 113, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(222, 198, 140, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(222, 198, 140, 0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
         }
         
         .brand-footer {
@@ -355,28 +961,21 @@
             align-items: center;
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
+            padding: 0 30px;
+            animation: fadeInUp 0.8s ease-out both;
         }
         
         .brand-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
+            text-transform: uppercase;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         
-        .brand-name::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-brown), transparent);
+        .brand-name:hover {
+            color: var(--primary-brown);
+            transform: scale(1.05);
         }
         
         .social-links {
@@ -391,26 +990,43 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
             font-size: 1.3rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-radius: 50%;
-            backdrop-filter: blur(5px);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .social-links a:hover::before {
+            left: 100%;
         }
         
         .social-links a:hover {
-            background: var(--primary-brown);
+            background-color: var(--primary-brown);
             color: var(--navy-blue);
-            transform: translateY(-5px);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .copyright {
             margin-top: 25px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-            position: relative;
-            z-index: 2;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
         
         .copyright p {
@@ -419,139 +1035,438 @@
         
         .ingett-credit {
             font-weight: 600;
-            color: var(--primary-brown);
             margin-top: 10px;
+            color: var(--primary-brown);
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        
+        .ingett-credit::before,
+        .ingett-credit::after {
+            content: '•';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-brown);
+            opacity: 0.7;
+        }
+        
+        .ingett-credit::before {
+            left: -5px;
+        }
+        
+        .ingett-credit::after {
+            right: -5px;
+        }
+        
+        /* Botón de scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--natural-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(54, 174, 113, 0.4);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(54, 174, 113, 0.6);
+        }
+        
+        /* Efecto de carga inicial */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--navy-blue);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-logo {
+            width: 100px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .loading-text {
+            color: var(--white);
+            font-family: 'ADA', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-in-out infinite alternate;
         }
         
         /* Responsive */
+        @media (max-width: 1100px) {
+            .feature-item {
+                width: 180px;
+                height: 90px;
+            }
+            
+            .feature-logo {
+                width: 140px;
+                height: 70px;
+            }
+        }
+        
         @media (max-width: 992px) {
             .carousel-container {
-                height: 400px;
+                height: 350px;
             }
             
-            .calendly-inline-widget {
-                height: 650px !important;
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.9rem;
             }
             
-            .logo {
-                font-size: 3.5rem;
+            .hero-description {
+                font-size: 1rem;
             }
             
-            .tagline-main {
-                font-size: 1.8rem;
+            .calendly-title {
+                font-size: 2.2rem;
             }
             
-            .tagline-sub {
-                font-size: 1.5rem;
+            .calendly-subtitle {
+                font-size: 1.2rem;
             }
             
-            .apartments-info {
-                font-size: 1.1rem;
+            .feature-item {
+                width: 160px;
+                height: 85px;
+            }
+            
+            .feature-logo {
+                width: 130px;
+                height: 65px;
+            }
+            
+            .calendly-container {
+                padding: 40px 25px;
+            }
+        }
+        
+        @media (max-width: 850px) {
+            .features-logos {
+                flex-wrap: wrap;
+            }
+            
+            .feature-item {
+                width: 50%;
+                height: 100px;
+                margin-bottom: 0;
+                padding: 10px 15px;
+            }
+            
+            .feature-item:nth-child(2)::after {
+                display: none;
+            }
+            
+            .feature-logo {
+                width: 140px;
+                height: 70px;
+            }
+            
+            .hero-section {
+                padding: 25px 0 15px 0;
             }
         }
         
         @media (max-width: 768px) {
             .carousel-container {
-                height: 350px;
+                height: 300px;
             }
             
-            .calendly-section {
-                padding: 40px 20px;
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.7rem;
             }
             
-            .calendly-inline-widget {
-                height: 600px !important;
+            .hero-description {
+                font-size: 0.95rem;
             }
             
-            .logo {
-                font-size: 3rem;
+            .calendly-title {
+                font-size: 2rem;
             }
             
-            .tagline-main {
-                font-size: 1.6rem;
+            .calendly-subtitle {
+                font-size: 1.1rem;
             }
             
-            .tagline-sub {
-                font-size: 1.3rem;
+            .section-title, .description-title, .final-title {
+                font-size: 1.4rem;
             }
             
-            .apartments-info {
-                font-size: 1rem;
+            .calendly-container {
+                padding: 35px 20px;
             }
             
             .brand-footer {
                 flex-direction: column;
-                gap: 25px;
+                gap: 20px;
             }
             
-            .section-title {
-                font-size: 1.9rem;
+            .hero-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 3px;
             }
             
-            .calendly-section h2 {
-                font-size: 2rem;
+            .contact-item {
+                min-width: 160px;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .features-logos {
+                flex-direction: column;
+                padding-top: 20px;
+            }
+            
+            .feature-item {
+                width: 100%;
+                height: 85px;
+                margin-bottom: 0;
+                padding: 8px 10px;
+            }
+            
+            .feature-item::after {
+                display: none;
+            }
+            
+            .feature-logo {
+                width: 150px;
+                height: 70px;
+            }
+            
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 0.9rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.8rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.7rem;
+                letter-spacing: 2.5px;
+                margin-bottom: 12px;
+            }
+            
+            .hero-logo {
+                max-width: 130px;
+            }
+            
+            .description-title::before,
+            .description-title::after {
+                display: none;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 580px) {
+            .carousel-container {
+                height: 250px;
+            }
+            
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.4rem;
+            }
+            
+            .hero-description {
+                font-size: 0.85rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.6rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .section-title, .description-title, .final-title {
+                font-size: 1.25rem;
+            }
+            
+            .calendly-container {
+                padding: 30px 15px;
+            }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .hero-section {
+                padding: 20px 0 10px 0;
             }
         }
         
         @media (max-width: 480px) {
             .carousel-container {
-                height: 250px;
+                height: 220px;
             }
             
-            .calendly-section {
-                padding: 30px 15px;
-                border-radius: 20px;
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.3rem;
             }
             
-            .calendly-section h2 {
-                font-size: 1.8rem;
+            .hero-description {
+                font-size: 0.8rem;
             }
             
-            .calendly-inline-widget {
-                height: 550px !important;
+            .calendly-title {
+                font-size: 1.5rem;
             }
             
-            .logo {
-                font-size: 2.5rem;
+            .calendly-subtitle {
+                font-size: 0.9rem;
             }
             
-            .tagline-main {
+            .section-title, .description-title, .final-title {
+                font-size: 1.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-logo {
+                max-width: 120px;
+            }
+            
+            .value-item {
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .hero-title, .hero-subtitle-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 0.75rem;
+            }
+            
+            .calendly-title {
                 font-size: 1.4rem;
             }
             
-            .tagline-sub {
-                font-size: 1.2rem;
+            .calendly-subtitle {
+                font-size: 0.85rem;
             }
             
-            .apartments-info {
-                font-size: 0.95rem;
+            .feature-logo {
+                width: 130px;
+                height: 65px;
             }
             
-            .floating-button {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .hero-subtitle {
+                letter-spacing: 1.5px;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="header-overlay"></div>
-            <div class="logo">ABEDUL</div>
-            <div class="tagline-main">Un lugar que se sienta bien.</div>
-            <div class="tagline-sub">Vivir cómodo junto a lo que más importa: tu familia.</div>
-            <div class="apartments-info">
-                Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito
+    <!-- Pantalla de carga inicial -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691282/1_gyq7ux.png" alt="Logo Abedul" class="loading-logo">
+        <div class="loading-text">Abedul Apartamentos</div>
+    </div>
+    
+    <!-- Botón flotante para agendar cita - NUEVO -->
+    <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita ahora">
+        <div class="button-icon">📅</div>
+        <div class="button-text">Agendar</div>
+    </a>
+    
+    <!-- Hero Section - CON EFECTOS -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo-container">
+                    <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691282/1_gyq7ux.png" alt="Logo Abedul" class="hero-logo">
+                </div>
+                
+                <div class="hero-subtitle">A B E D U L D E P A R T A M E N T O S</div>
+                
+                <div class="hero-title-container">
+                    <h1 class="hero-title">Un lugar que se sienta bien.</h1>
+                    <div class="hero-subtitle-text">Vivir cómodo junto a lo que más importa: tu familia.</div>
+                    <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
+                </div>
+                
+                <div class="features-logos">
+                    <div class="feature-item">
             </div>
-        </header>
-        
-        <!-- Carrusel en la parte superior -->
-        <section class="carousel-section">
-            <h2 class="section-title">Descubre Nuestros Espacios</h2>
+        </div>
+    </section>
+    
+    <!-- Sección del carrusel -->
+    <section class="carousel-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">Descubre Nuestros Espacios</h2>
+            </div>
             <div class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-item">
@@ -570,71 +1485,144 @@
                         <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752527/BBQ_peayaf.jpg" alt="Imagen 5">
                     </div>
                 </div>
-                <div class="carousel-indicators" id="carousel-indicators">
-                    <!-- Los indicadores se generarán con JavaScript -->
-                </div>
+                <div class="carousel-indicators" id="carousel-indicators"></div>
             </div>
-        </section>
-        
-        <!-- Sección de Calendly -->
-        <section class="calendly-section" id="agenda-visita">
-            <h2>Agenda Tu Visita</h2>
-            
-            <p class="calendly-intro">
-                ¡Te invitamos a conocer nuestro proyecto! Agenda una cita para visitar Abedul Apartamentos 
-                y descubre por qué somos la mejor opción para tu primer hogar. Selecciona una fecha y hora 
-                que se adapte a tu disponibilidad.
-            </p>
-            
+        </div>
+    </section>
+    
+    <!-- Sección de descripción -->
+    <section class="description-section">
+        <div class="container">
+            <div class="description-content">
+                <h2 class="description-title">Hay muchas opciones de departamentos. Nosotros te ayudamos a saber si Abedul es el tuyo.</h2>
+                <p class="description-text">Abedul no es lujo ni promesas exageradas: es comodidad real, buenos acabados y una ubicación práctica para el día a día.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección del Calendly -->
+    <section class="calendly-section" id="agendar-cita">
+        <div class="container">
             <div class="calendly-container">
-                <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/dcoronado-olandseguros/30min" style="min-width:320px;height:700px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                <!-- Calendly inline widget end -->
+                <h2 class="calendly-title">Agenda tu reunión gratuita de 30 minutos</h2>
+                <div class="calendly-widget-container">
+                    <!-- Principio del widget integrado de Calendly -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Final del widget integrado de Calendly -->
+                </div>
+                
+                <p class="calendly-note">
+                    <i class="fas fa-info-circle"></i> Después de agendar tu cita, recibirás un correo de confirmación con todos los detalles.
+                </p>
             </div>
-            
-            <p class="calendly-note">
-                <i class="fas fa-info-circle"></i> Después de agendar tu cita, recibirás un correo de confirmación con todos los detalles.
-            </p>
-        </section>
-        
-        <footer>
-            <div class="footer-overlay"></div>
-            <div class="brand-footer">
-                <div class="brand-name">ABEDUL APARTAMENTOS</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+    
+    <!-- Sección final -->
+    <section class="final-section">
+        <div class="container">
+            <div class="final-content">
+                <h2 class="final-title">¿Qué hacemos en Abedul?</h2>
+                <h3 class="final-subtitle">Abedul | Departamentos bien pensados en ubicación central</h3>
+                
+                <p class="final-text">Ayudamos a personas que ya saben lo que buscan a tomar una buena decisión inmobiliaria, ofreciendo un proyecto claro, cómodo y bien ubicado, sin obligarlas a perder tiempo comparando opciones que no encajan con su estilo de vida o inversión.</p>
+                
+                <p class="final-text">Diseñamos Abedul para quienes valoran:</p>
+                
+                <div class="values-list">
+                    <div class="value-item">
+                        <div class="value-icon">✔</div>
+                        <div class="value-text">Departamentos cómodos y funcionales, con excelentes acabados.</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">✔</div>
+                        <div class="value-text">Ubicación central, con supermercados y servicios a pocos minutos.</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">✔</div>
+                        <div class="value-text">Fácil movilización y conectividad con la ciudad.</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">✔</div>
+                        <div class="value-text">Una inversión inmobiliaria práctica, sin lujos innecesarios ni promesas exageradas.</div>
+                    </div>
+                </div>
+                
+                <div class="final-cta">
+                    <h3 class="cta-title">No vendemos más opciones.<br>Te ayudamos a confirmar si Abedul es la opción correcta para ti.</h3>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">🌐</div>
+                            <div class="contact-text">Conoce el proyecto</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📩</div>
+                            <div class="contact-text">
+                                Contáctenos:<br>
+                                <a href="mailto:abeduldepartamentos@outlook.com" class="contact-link">abeduldepartamentos@outlook.com</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Abedul Apartamentos. Todos los derechos reservados.</p>
-                <p class="ingett-credit">Una marca creada por INGETT</p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="brand-footer">
+                    <div class="brand-name">ABEDUL APARTAMENTOS</div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/jrconstruccionesuio" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/jr.construcciones.ec/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Abedul Apartamentos. Todos los derechos reservados.</p>
+                    <p class="ingett-credit">Una marca creada por INGETT</p>
+                </div>
             </div>
-        </footer>
+        </div>
+    </footer>
+    
+    <!-- Botón de scroll to top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- Botón flotante para agenda -->
-    <a href="#agenda-visita" class="floating-button">
-        <i class="far fa-calendar-alt"></i>
-    </a>
-
     <script>
+        // Pantalla de carga
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.visibility = 'hidden';
+            }, 1000);
+        });
+        
         // Variables globales para el carrusel
         let currentSlide = 0;
         const totalSlides = 5;
         const carousel = document.querySelector('.carousel');
+        let carouselInterval;
         
         // Carrusel automático
+        function startCarousel() {
+            carouselInterval = setInterval(() => {
+                nextSlide();
+            }, 3000);
+        }
+        
         function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
             updateIndicators();
         }
-        
-        // Cambiar imagen cada 2 segundos
-        let carouselInterval = setInterval(nextSlide, 2000);
         
         // Pausar carrusel al pasar el mouse
         const carouselContainer = document.querySelector('.carousel-container');
@@ -643,7 +1631,7 @@
         });
         
         carouselContainer.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(nextSlide, 2000);
+            startCarousel();
         });
         
         // Crear indicadores del carrusel
@@ -659,6 +1647,9 @@
                     currentSlide = i;
                     carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
                     updateIndicators();
+                    // Reiniciar el intervalo
+                    clearInterval(carouselInterval);
+                    startCarousel();
                 });
                 
                 indicatorsContainer.appendChild(indicator);
@@ -677,25 +1668,175 @@
             });
         }
         
-        // Animación suave al hacer clic en el botón flotante
-        document.querySelector('.floating-button').addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '#agenda-visita') {
-                e.preventDefault();
-                const target = document.querySelector('#agenda-visita');
-                window.scrollTo({
-                    top: target.offsetTop - 30,
-                    behavior: 'smooth'
-                });
+        // Botón de scroll to top
+        const scrollTopButton = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
             }
         });
         
-        // Inicializar la página
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Botón flotante para agendar cita
+        const floatingButton = document.getElementById('floatingButton');
+        
+        // Función para animar el botón flotante
+        function animateFloatingButton() {
+            floatingButton.style.animation = 'pulse-strong 2s infinite';
+        }
+        
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos con animaciones
+        document.querySelectorAll('.value-item, .contact-item, .description-content, .calendly-container, .final-content').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Efecto de escritura en el título principal (opcional)
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle-text');
+        const heroDescription = document.querySelector('.hero-description');
+        const calendlyTitle = document.querySelector('.calendly-title');
+        
+        const originalTitle = heroTitle.textContent;
+        const originalSubtitle = heroSubtitle.textContent;
+        const originalDescription = heroDescription.textContent;
+        const originalCalendlyTitle = calendlyTitle.textContent;
+        
+        heroTitle.textContent = '';
+        heroSubtitle.textContent = '';
+        heroDescription.textContent = '';
+        calendlyTitle.textContent = '';
+        
+        let i = 0, j = 0, k = 0, l = 0;
+        
+        function typeWriterTitle() {
+            if (i < originalTitle.length) {
+                heroTitle.textContent += originalTitle.charAt(i);
+                i++;
+                setTimeout(typeWriterTitle, 50);
+            } else if (j === 0) {
+                setTimeout(typeWriterSubtitle, 300);
+            }
+        }
+        
+        function typeWriterSubtitle() {
+            if (j < originalSubtitle.length) {
+                heroSubtitle.textContent += originalSubtitle.charAt(j);
+                j++;
+                setTimeout(typeWriterSubtitle, 40);
+            } else if (k === 0) {
+                setTimeout(typeWriterDescription, 300);
+            }
+        }
+        
+        function typeWriterDescription() {
+            if (k < originalDescription.length) {
+                heroDescription.textContent += originalDescription.charAt(k);
+                k++;
+                setTimeout(typeWriterDescription, 30);
+            } else if (l === 0) {
+                setTimeout(typeWriterCalendly, 1000);
+            }
+        }
+        
+        function typeWriterCalendly() {
+            if (l < originalCalendlyTitle.length) {
+                calendlyTitle.textContent += originalCalendlyTitle.charAt(l);
+                l++;
+                setTimeout(typeWriterCalendly, 40);
+            }
+        }
+        
+        // Iniciar efectos después de la carga
         function init() {
             createIndicators();
+            startCarousel();
+            
+            // Iniciar efecto de escritura después de un breve retraso
+            setTimeout(() => {
+                typeWriterTitle();
+            }, 500);
+            
+            // Inicializar animaciones de elementos
+            document.querySelectorAll('.feature-item, .value-item').forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Iniciar animación del botón flotante
+            animateFloatingButton();
         }
         
         // Ejecutar inicialización al cargar la página
-        document.addEventListener('DOMContentLoaded', init);
+        init();
+        
+        // Efecto de confeti al hacer clic en el logo
+        const heroLogo = document.querySelector('.hero-logo');
+        heroLogo.addEventListener('click', () => {
+            createConfetti();
+        });
+        
+        function createConfetti() {
+            const colors = ['#dec68c', '#36ae71', '#3f4b5e', '#ffffff'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.top = '50%';
+                confetti.style.left = '50%';
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 3;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let x = 50;
+                let y = 50;
+                
+                document.body.appendChild(confetti);
+                
+                const confettiInterval = setInterval(() => {
+                    x += vx;
+                    y += vy;
+                    vy += 0.1; // gravedad
+                    
+                    confetti.style.left = `${x}%`;
+                    confetti.style.top = `${y}%`;
+                    confetti.style.opacity = (100 - (y - 50)) / 100;
+                    
+                    if (y > 150) {
+                        clearInterval(confettiInterval);
+                        confetti.remove();
+                    }
+                }, 20);
+            }
+        }
     </script>
 </body>
 </html>
